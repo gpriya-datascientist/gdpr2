@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PressVision2 — Industrial Inspection</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',system-ui,sans-serif;background:#f1f5f9;min-height:100vh;}
+header{background:#1e3a5f;color:white;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-size:20px;font-weight:800;letter-spacing:-0.5px;}
+.logo span{color:#60a5fa;}
+.health{display:flex;align-items:center;gap:8px;font-size:12px;opacity:0.8;}
+.dot{width:8px;height:8px;border-radius:50%;background:#ef4444;}
+.dot.ok{background:#10b981;box-shadow:0 0 6px rgba(16,185,129,0.6);}
+.main{max-width:1100px;margin:32px auto;padding:0 24px;display:grid;grid-template-columns:300px 1fr;gap:24px;}
+.sidebar{display:flex;flex-direction:column;gap:16px;}
+.card{background:white;border-radius:12px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+.card h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#64748b;margin-bottom:12px;}
+.project-btn{width:100%;text-align:left;padding:12px 14px;border-radius:8px;border:2px solid #e2e8f0;background:white;cursor:pointer;font-size:13px;font-weight:500;color:#334155;transition:all 0.15s;margin-bottom:6px;}
+.project-btn:hover{border-color:#3b82f6;color:#1d4ed8;}
+.project-btn.active{border-color:#3b82f6;background:#eff6ff;color:#1d4ed8;}
+.project-btn .proj-name{font-weight:700;display:block;}
+.project-btn .proj-desc{font-size:11px;color:#64748b;margin-top:2px;}
+.stat-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f1f5f9;font-size:12px;}
+.stat-row:last-child{border:none;}
+.stat-label{color:#64748b;}
+.stat-value{font-weight:700;color:#1e3a5f;font-family:monospace;}
+.content{display:flex;flex-direction:column;gap:20px;}
+.dropzone{background:white;border:2px dashed #cbd5e1;border-radius:12px;padding:48px 32px;text-align:center;cursor:pointer;transition:all 0.2s;}
+.dropzone:hover,.dropzone.drag{border-color:#3b82f6;background:#eff6ff;}
+.dropzone-icon{font-size:48px;margin-bottom:12px;}
+.dropzone h2{font-size:16px;font-weight:700;color:#1e3a5f;margin-bottom:6px;}
+.dropzone p{font-size:12px;color:#94a3b8;}
+.result-card{background:white;border-radius:12px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+.result-card.good{border-left:4px solid #10b981;}
+.result-card.anomaly{border-left:4px solid #ef4444;}
+.result-card.checking{border-left:4px solid #3b82f6;}
+.verdict{font-size:22px;font-weight:800;margin-bottom:6px;}
+.verdict.good{color:#065f46;}
+.verdict.anomaly{color:#991b1b;}
+.meta{font-size:12px;color:#94a3b8;margin-bottom:10px;}
+.conf-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;margin-bottom:12px;}
+.conf-fill{height:100%;border-radius:3px;}
+.conf-fill.good{background:#10b981;}
+.conf-fill.anomaly{background:#ef4444;}
+.reason{font-size:13px;color:#334155;line-height:1.6;}
+.suggestion{margin-top:14px;padding:12px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;}
+.sug-title{font-size:11px;font-weight:700;text-transform:uppercase;color:#3b82f6;margin-bottom:8px;}
+.sug-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;}
+.apply-btn{width:100%;margin-top:10px;padding:9px;background:#3b82f6;color:white;border:none;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;}
+.apply-btn:hover{background:#2563eb;}
+.preview-wrap{position:relative;margin-bottom:16px;display:block;width:100%;overflow:hidden;}
+.preview-wrap img{width:100%;border-radius:8px;display:block;max-height:400px;object-fit:contain;background:#f8fafc;}
+.bbox{position:absolute;border:3px solid #ef4444;border-radius:3px;background:rgba(239,68,68,0.08);pointer-events:none;}
+.bbox-label{position:absolute;top:-22px;left:0;background:#ef4444;color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;white-space:nowrap;}
+.spinner{display:flex;gap:4px;justify-content:center;}
+.spinner span{width:8px;height:8px;background:#3b82f6;border-radius:50%;animation:sp 1.2s infinite;}
+.spinner span:nth-child(2){animation-delay:.2s;}
+.spinner span:nth-child(3){animation-delay:.4s;}
+@keyframes sp{0%,80%,100%{opacity:.3;transform:scale(.8);}40%{opacity:1;transform:scale(1.2);}}
+#file-inp{display:none;}
+.history{background:white;border-radius:12px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+.history h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#64748b;margin-bottom:10px;}
+.hist-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:12px;}
+.hist-item:last-child{border:none;}
+.hist-badge{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;}
+.hist-badge.GOOD{background:#ecfdf5;color:#065f46;}
+.hist-badge.ANOMALY{background:#fef2f2;color:#991b1b;}
+.no-hist{font-size:12px;color:#94a3b8;text-align:center;padding:12px 0;}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Press<span>Vision</span>2</div>
+  <div class="health"><div class="dot" id="dot"></div><span id="hlabel">checking...</span><span style="opacity:0.4;margin-left:8px;">Qwen2.5-VL</span></div>
+</header>
+<div class="main">
+  <div class="sidebar">
+    <div class="card">
+      <h3>Inspection Projects</h3>
+      <button class="project-btn active" onclick="setProject('bsh')" id="btn-bsh">
+        <span class="proj-name">&#128269; BSH Crack Detection</span>
+        <span class="proj-desc">Metal press tool edge cracks</span>
+      </button>
+      <button class="project-btn" onclick="setProject('klinken')" id="btn-klinken">
+        <span class="proj-name">&#9881; Klinken-Rack Position</span>
+        <span class="proj-desc">Press clamp rack position check</span>
+      </button>
+      <button class="project-btn" onclick="setProject('casting')" id="btn-casting">
+        <span class="proj-name">&#128295; Casting Defect Detection</span>
+        <span class="proj-desc">Impeller surface defects (40+40 images)</span>
+      </button>
+    </div>
+    <div class="card" id="stats-card">
+      <h3>Dataset Stats</h3>
+      <div id="stats-content">Loading...</div>
+    </div>
+    <div class="card">
+      <h3>Vision Model</h3>
+      <select id="model-sel" style="width:100%;padding:8px;border-radius:6px;border:1px solid #e2e8f0;font-size:12px;" onchange="setModel(this.value)">
+        <option value="llava:7b" selected>llava:7b (fast ~30s)</option>
+        <option value="qwen2.5vl:7b">qwen2.5vl:7b (slow ~3min first)</option>
+        <option value="llava:13b">llava:13b (slow ~2min)</option>
+      </select>
+      <div style="font-size:11px;color:#94a3b8;margin-top:6px;" id="model-note">llava:7b is already loaded — fastest option</div>
+    </div>
+    <div class="card">
+      <h3>Session</h3>
+      <div class="stat-row"><span class="stat-label">Inspections</span><span class="stat-value" id="s-total">0</span></div>
+      <div class="stat-row"><span class="stat-label">GOOD</span><span class="stat-value" id="s-good" style="color:#065f46">0</span></div>
+      <div class="stat-row"><span class="stat-label">ANOMALY</span><span class="stat-value" id="s-bad" style="color:#991b1b">0</span></div>
+      <div class="stat-row"><span class="stat-label">Accuracy</span><span class="stat-value" id="s-acc">--</span></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="dropzone" id="dz" onclick="document.getElementById('file-inp').click()" ondragover="dOver(event)" ondrop="dDrop(event)" ondragleave="dLeave(event)">
+      <div class="dropzone-icon">&#128247;</div>
+      <h2>Upload Part Photo</h2>
+      <p>Click or drag & drop — JPG, PNG, WEBP, max 20MB<br>Select project first, then upload image</p>
+    </div>
+    <input type="file" id="file-inp" accept="image/*" onchange="fileSelected(this)">
+    <div id="result-area"></div>
+    <div class="history">
+      <h3>Inspection History</h3>
+      <div id="history-list"><div class="no-hist">No inspections yet</div></div>
+    </div>
+  </div>
+</div>
+<script>
+const API='http://127.0.0.1:8004';
+let project='bsh', stats={total:0,good:0,bad:0}, history=[];
+let visionModel='llava:7b';
+
+function setModel(m){
+  visionModel=m;
+  const notes={'llava:7b':'llava:7b is already loaded — fastest option',
+               'qwen2.5vl:7b':'First call loads 6GB — wait 3 min, then fast',
+               'llava:13b':'First call loads 8GB — wait 2-3 min'};
+  document.getElementById('model-note').textContent=notes[m]||'';
+}
+
+checkHealth(); setInterval(checkHealth,15000); loadStats();
+
+async function checkHealth(){
+  try{
+    const r=await fetch(API+'/health');
+    const d=await r.json();
+    document.getElementById('dot').className='dot ok';
+    document.getElementById('hlabel').textContent='API online · '+d.vision_model;
+  }catch{
+    document.getElementById('dot').className='dot';
+    document.getElementById('hlabel').textContent='API offline';
+  }
+}
+
+async function loadStats(){
+  try{
+    const r=await fetch(API+'/dataset/'+project+'/stats');
+    const d=await r.json();
+    document.getElementById('stats-content').innerHTML=
+      '<div class="stat-row"><span class="stat-label">Good images</span><span class="stat-value" style="color:#065f46">'+d.good_images+'</span></div>'+
+      '<div class="stat-row"><span class="stat-label">Bad images</span><span class="stat-value" style="color:#991b1b">'+d.bad_images+'</span></div>'+
+      '<div class="stat-row"><span class="stat-label">Total</span><span class="stat-value">'+d.total+'</span></div>';
+  }catch{document.getElementById('stats-content').textContent='Server offline';}
+}
+
+function setProject(p){
+  project=p;
+  document.querySelectorAll('.project-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn-'+p).classList.add('active');
+  loadStats();
+}
+
+function dOver(e){e.preventDefault();document.getElementById('dz').classList.add('drag');}
+function dLeave(){document.getElementById('dz').classList.remove('drag');}
+function dDrop(e){e.preventDefault();dLeave();const f=e.dataTransfer.files[0];if(f)inspect(f);}
+function fileSelected(i){const f=i.files[0];if(f)inspect(f);i.value='';}
+
+async function inspect(file){
+  const ra=document.getElementById('result-area');
+  const url=URL.createObjectURL(file);
+
+  ra.innerHTML=`
+    <div class="result-card checking">
+      <div class="preview-wrap"><img src="${url}" id="prev-img"></div>
+      <div class="verdict" style="color:#3b82f6">Inspecting...</div>
+      <div class="meta">Using ${project==='bsh'?'BSH Crack Detection':'Klinken-Rack Position'} model</div>
+      <div class="spinner"><span></span><span></span><span></span></div>
+    </div>`;
+
+  try{
+    const form=new FormData();
+    form.append('file',file);
+    form.append('project',project);
+    form.append('model',visionModel);
+    const r=await fetch(API+'/inspect',{method:'POST',body:form});
+    if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.detail||'HTTP '+r.status);}
+    const d=await r.json();
+    showResult(d, url);
+    updateSession(d);
+    addHistory(d, file.name);
+  }catch(e){
+    ra.innerHTML=`<div class="result-card" style="border-left:4px solid #ef4444">
+      <div class="verdict anomaly">&#9888; Inspection Failed</div>
+      <div class="reason">${e.message}</div></div>`;
+  }
+}
+
+function showResult(d, url){
+  const isA=d.verdict==='ANOMALY';
+  const confPct=Math.round((d.confidence||0)*100);
+  let sugHtml='';
+  if(isA&&d.control_suggestion){
+    const s=d.control_suggestion;
+    sugHtml=`<div class="suggestion">
+      <div class="sug-title">&#9881; Suggested Control Fix</div>
+      <div class="sug-row"><span style="color:#64748b">Parameter</span><strong>${s.param_label}</strong></div>
+      <div class="sug-row"><span style="color:#64748b">Change</span><span style="color:${s.action==='reduce'?'#ef4444':'#10b981'};font-weight:700">${s.change} (${s.current_value} → ${s.suggested_value})</span></div>
+      <div class="sug-row"><span style="color:#64748b">Risk</span><span>${s.risk.toUpperCase()}</span></div>
+      <button class="apply-btn" onclick="copyCmd('${s.command}')">&#128203; Copy Command: ${s.command}</button>
+    </div>`;
+  }
+  document.getElementById('result-area').innerHTML=`
+    <div class="result-card ${isA?'anomaly':'good'}">
+      <div class="preview-wrap" id="preview-wrap">
+        <img src="${url}" id="prev-img">
+        <div id="bbox-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"></div>
+      </div>
+      <div class="verdict ${isA?'anomaly':'good'}">${isA?'&#9888; ANOMALY DETECTED':'&#10003; GOOD'}</div>
+      <div class="meta">Confidence: ${confPct}% &nbsp;|&nbsp; Backend: ${d.backend_used} &nbsp;|&nbsp; ${(d.latency_ms/1000).toFixed(1)}s &nbsp;|&nbsp; Project: ${d.project}</div>
+      <div class="conf-bar"><div class="conf-fill ${isA?'anomaly':'good'}" style="width:${confPct}%"></div></div>
+      <div class="reason">${d.reason||''}</div>
+      ${sugHtml}
+    </div>`;
+  // Draw boxes after DOM is ready — small delay ensures offsetWidth is available
+  const img = document.getElementById('prev-img');
+  if(img) {
+    const doDraw = () => {
+      // Adjust boxes for object-fit:contain letterboxing
+      const nw = img.naturalWidth, nh = img.naturalHeight;
+      const dw = img.offsetWidth,  dh = img.offsetHeight;
+      const scale = Math.min(dw/nw, dh/nh);
+      const rw = nw*scale, rh = nh*scale;
+      const ox = (dw-rw)/2, oy = (dh-rh)/2;
+      // Store adjusted dims for drawBoxes
+      img._rw=rw; img._rh=rh; img._ox=ox; img._oy=oy;
+      drawBoxes(d.boxes||[], isA);
+    };
+    if(img.complete && img.naturalWidth>0) setTimeout(doDraw,100);
+    else img.onload = () => setTimeout(doDraw,100);
+    img.src = url;
+  }
+}
+
+function drawBoxes(boxes, isAnomaly){
+  const wrap = document.getElementById('preview-wrap');
+  const img  = document.getElementById('prev-img');
+  if(!wrap || !img) return;
+  wrap.querySelectorAll('.bbox-box').forEach(el=>el.remove());
+  if(!isAnomaly || !boxes || !boxes.length) return;
+
+  // Use letterbox-corrected coords if available, else full img dims
+  const rw = img._rw || img.offsetWidth;
+  const rh = img._rh || img.offsetHeight;
+  const ox = img._ox || 0;
+  const oy = img._oy || 0;
+
+  boxes.forEach((box,i)=>{
+    const d = document.createElement('div');
+    d.className = 'bbox-box';
+    d.style.cssText =
+      'position:absolute;'+
+      'left:'+(ox + box.x_min*rw)+'px;'+
+      'top:'+(oy + box.y_min*rh)+'px;'+
+      'width:'+((box.x_max-box.x_min)*rw)+'px;'+
+      'height:'+((box.y_max-box.y_min)*rh)+'px;'+
+      'border:2px solid #ef4444;'+
+      'background:rgba(239,68,68,0.08);'+
+      'box-sizing:border-box;pointer-events:none;z-index:99;';
+    const lbl = document.createElement('span');
+    lbl.style.cssText =
+      'position:absolute;top:-20px;left:0;'+
+      'background:#ef4444;color:#fff;'+
+      'font-size:10px;font-weight:700;'+
+      'padding:1px 6px;border-radius:3px;white-space:nowrap;';
+    lbl.textContent = box.score ? Math.round(box.score*100)+'%' : 'DEFECT '+(i+1);
+    d.appendChild(lbl);
+    wrap.appendChild(d);
+  });
+}
+
+function copyCmd(cmd){navigator.clipboard.writeText(cmd);alert('Copied: '+cmd);}
+
+function updateSession(d){
+  stats.total++;
+  if(d.verdict==='GOOD') stats.good++; else stats.bad++;
+  document.getElementById('s-total').textContent=stats.total;
+  document.getElementById('s-good').textContent=stats.good;
+  document.getElementById('s-bad').textContent=stats.bad;
+  document.getElementById('s-acc').textContent=stats.total?Math.round(stats.good/stats.total*100)+'%':'--';
+}
+
+function addHistory(d, fname){
+  history.unshift({verdict:d.verdict,confidence:Math.round(d.confidence*100),fname:fname.slice(-20),project:d.project,time:new Date().toLocaleTimeString()});
+  if(history.length>10) history.pop();
+  document.getElementById('history-list').innerHTML=history.map(h=>
+    `<div class="hist-item">
+      <span class="hist-badge ${h.verdict}">${h.verdict}</span>
+      <span style="flex:1;color:#334155">${h.fname}</span>
+      <span style="color:#64748b">${h.confidence}%</span>
+      <span style="color:#94a3b8">${h.time}</span>
+    </div>`).join('') || '<div class="no-hist">No inspections yet</div>';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Large downloads (Kaggle datasets)
+data/downloads/
+
+# DINOv2 model weights (downloaded automatically)
+data/models/
+
+# Keep seed images (small, needed for demo)
+!data/bsh/
+!data/klinken/
+!data/casting/
+
+# Env
+.env
+
+# Logs
+*.log
