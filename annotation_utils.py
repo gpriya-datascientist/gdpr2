@@ -14,7 +14,9 @@ def load_annotations(image_path: str) -> Optional[list[dict]]:
     candidates = [
         img_path.with_suffix('.xml'),
         img_path.parent / 'annotations' / (img_path.stem + '.xml'),
+        img_path.parent / 'xml' / (img_path.stem + '.xml'),
         img_path.parent.parent / 'annotations' / (img_path.stem + '.xml'),
+        img_path.parent.parent / 'xml' / (img_path.stem + '.xml'),
     ]
     xml_path = next((p for p in candidates if p.exists()), None)
     if not xml_path:
