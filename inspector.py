@@ -157,7 +157,7 @@ async def inspect_image(image_bytes: bytes, project_id: str = "bsh",
         log.warning("DINOv2 failed: %s", e)
 
     # â”€â”€ Fallback: llava via Ollama â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    r = await _try_local(image_bytes, proj, mime)
+    r = await _try_local(image_bytes, proj, mime, image_path)
     if r:
         r.project = project_id
         r.control_suggestion = _get_suggestion(r, proj)
@@ -175,13 +175,30 @@ Respond ONLY with valid JSON:
 {{"verdict": "ANOMALY" or "GOOD", "confidence": <0.0-1.0>, "reason": "<max 30 words>", "defect_type": "<crack or wrong_position or unknown or null>", "box": {{"x_min": 0.1, "y_min": 0.3, "x_max": 0.7, "y_max": 0.8}} or null}}"""
 
 
-async def _try_local(image_bytes, proj, mime):
+async def _try_local(image_bytes, proj, mime, image_path=None):
     start = time.perf_counter()
     try:
         img_b64 = base64.b64encode(image_bytes).decode()
-        prompt = PROMPT_TEMPLATE.format(
-            part_name=proj["part_name"],
-            description_hint=proj["description_hint"])
+        from annotation_utils import load_annotations
+        xml_boxes = load_annotations(image_path) if image_path else None
+        if xml_boxes:
+            box_desc = []
+            for i, b in enumerate(xml_boxes):
+                box_desc.append(
+                    f"  Region {i+1} ({b.get('name','defect')}): "
+                    f"{int(b['x_min']*100)}-{int(b['x_max']*100)}% horizontal, "
+                    f"{int(b['y_min']*100)}-{int(b['y_max']*100)}% vertical")
+            prompt = (
+                f"You are a strict visual quality inspector for {proj['part_name']}.\n"
+                f"EXPERT-ANNOTATED DEFECT LOCATIONS:\n" + "\n".join(box_desc) +
+                "\n\nLook at EXACTLY these regions. Confirm defects there.\n"
+                "Respond ONLY with valid JSON:\n"
+                '{{"verdict": "ANOMALY" or "GOOD", "confidence": 0.95, '
+                '"reason": "max 30 words", "defect_type": "crack or wrong_position or unknown"}}')
+        else:
+            prompt = PROMPT_TEMPLATE.format(
+                part_name=proj["part_name"],
+                description_hint=proj["description_hint"])
         payload = {"model": VISION_MODEL, "prompt": prompt,
                    "images": [img_b64], "stream": False,
                    "options": {"temperature": 0.0}}
