@@ -109,7 +109,6 @@ header{background:#1e3a5f;color:white;padding:16px 32px;display:flex;align-items
       <select id="model-sel" style="width:100%;padding:8px;border-radius:6px;border:1px solid #e2e8f0;font-size:12px;" onchange="setModel(this.value)">
         <option value="dinov2" selected>⚡ DINOv2 (default ~50ms)</option>
         <option value="llava:7b">🦙 llava:7b (~30s)</option>
-        <option value="llava:13b">🦙 llava:13b (~2min)</option>
         <option value="qwen2.5vl:7b">🔮 qwen2.5vl:7b (~3min first)</option>
         <option value="minicpm-v">🔬 minicpm-v (~45s, industrial)</option>
       </select>
@@ -147,7 +146,6 @@ function setModel(m){
   const notes={
     'dinov2':      '⚡ DINOv2 — trained on your dataset, 50ms, most accurate',
     'llava:7b':    '🦙 llava:7b — already loaded, ~30s, general vision',
-    'llava:13b':   '🦙 llava:13b — already loaded, ~2min, better than 7b',
     'qwen2.5vl:7b':'🔮 qwen2.5vl — already loaded, first call ~3min then faster',
     'minicpm-v':   '🔬 minicpm-v — pull first, ~45s, fine-grained industrial vision'
   };
