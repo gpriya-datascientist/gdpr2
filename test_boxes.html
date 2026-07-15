@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{margin:20px;font-family:sans-serif;}
+#wrap{position:relative;display:inline-block;border:1px solid #ccc;}
+#img{display:block;width:600px;}
+.box{position:absolute;border:3px solid red;background:rgba(255,0,0,0.1);box-sizing:border-box;}
+.lbl{position:absolute;top:-22px;left:0;background:red;color:#fff;font-size:11px;font-weight:700;padding:2px 6px;border-radius:3px;}
+</style>
+</head>
+<body>
+<h3>Box Drawing Test</h3>
+<div id="wrap">
+  <img id="img">
+</div>
+<div id="info" style="margin-top:10px;font-size:12px;"></div>
+<script>
+// Simulate what the API returns
+const boxes = [
+  {"y_min":0.0,"x_min":0.125,"y_max":0.4375,"x_max":0.25,"score":1.0},
+  {"y_min":0.0625,"x_min":0.78125,"y_max":0.53125,"x_max":0.9375,"score":1.0},
+  {"y_min":0.5,"x_min":0.03125,"y_max":0.71875,"x_max":0.21875,"score":1.0}
+];
+
+const img = document.getElementById('img');
+const wrap = document.getElementById('wrap');
+const info = document.getElementById('info');
+
+img.onload = function(){
+  const iw = img.offsetWidth;
+  const ih = img.offsetHeight;
+  info.textContent = 'Image rendered: '+iw+'x'+ih+' | Natural: '+img.naturalWidth+'x'+img.naturalHeight;
+  boxes.forEach((box,i)=>{
+    const div = document.createElement('div');
+    div.className = 'box';
+    div.style.left   = Math.round(box.x_min * iw)+'px';
+    div.style.top    = Math.round(box.y_min * ih)+'px';
+    div.style.width  = Math.round((box.x_max-box.x_min)*iw)+'px';
+    div.style.height = Math.round((box.y_max-box.y_min)*ih)+'px';
+    const lbl = document.createElement('span');
+    lbl.className = 'lbl';
+    lbl.textContent = Math.round(box.score*100)+'%';
+    div.appendChild(lbl);
+    wrap.appendChild(div);
+  });
+};
+img.src = 'data/klinken/bad/03a6617a2e08.jpg';
+</script>
+</body>
+</html>

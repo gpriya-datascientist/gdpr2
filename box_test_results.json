@@ -1,0 +1,1270 @@
+[
+  {
+    "file": "03a6617a2e08.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.55,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0,
+        "x_min": 0.125,
+        "y_max": 0.4375,
+        "x_max": 0.25,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.78125,
+        "y_max": 0.53125,
+        "x_max": 0.9375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.03125,
+        "y_max": 0.71875,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.75,
+        "y_max": 0.78125,
+        "x_max": 1.0,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.8125,
+        "x_min": 0.8125,
+        "y_max": 1.0,
+        "x_max": 0.90625,
+        "score": 1.0
+      }
+    ]
+  },
+  {
+    "file": "0c060c835b90.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.61,
+    "n_boxes": 3,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0,
+        "x_min": 0.34375,
+        "y_max": 0.09375,
+        "x_max": 0.4375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.375,
+        "y_max": 0.15625,
+        "x_max": 0.46875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.34375,
+        "y_max": 0.15625,
+        "x_max": 0.4375,
+        "score": 1.0
+      }
+    ]
+  },
+  {
+    "file": "0e04eaa8be08.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.61,
+    "n_boxes": 3,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0,
+        "x_min": 0.34375,
+        "y_max": 0.09375,
+        "x_max": 0.4375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.375,
+        "y_max": 0.15625,
+        "x_max": 0.46875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.34375,
+        "y_max": 0.15625,
+        "x_max": 0.4375,
+        "score": 1.0
+      }
+    ]
+  },
+  {
+    "file": "2977e9df1e90.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.62,
+    "n_boxes": 3,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0,
+        "x_min": 0.34375,
+        "y_max": 0.09375,
+        "x_max": 0.4375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.34375,
+        "y_max": 0.15625,
+        "x_max": 0.4375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.375,
+        "y_max": 0.15625,
+        "x_max": 0.46875,
+        "score": 1.0
+      }
+    ]
+  },
+  {
+    "file": "3a88aff80a2a.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.6,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.34375,
+        "x_min": 0.625,
+        "y_max": 0.78125,
+        "x_max": 1.0,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.4375,
+        "x_min": 0.03125,
+        "y_max": 0.5,
+        "x_max": 0.0625,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.1875,
+        "x_min": 0.5,
+        "y_max": 0.34375,
+        "x_max": 0.625,
+        "score": 0.959
+      },
+      {
+        "y_min": 0.0,
+        "x_min": 0.59375,
+        "y_max": 0.21875,
+        "x_max": 0.875,
+        "score": 0.888
+      },
+      {
+        "y_min": 0.8125,
+        "x_min": 0.65625,
+        "y_max": 0.96875,
+        "x_max": 0.875,
+        "score": 0.887
+      }
+    ]
+  },
+  {
+    "file": "483b0a0031d3.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.54,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.03125,
+        "x_min": 0.125,
+        "y_max": 0.6875,
+        "x_max": 0.3125,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.09375,
+        "x_min": 0.75,
+        "y_max": 0.75,
+        "x_max": 0.9375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.0625,
+        "y_max": 0.6875,
+        "x_max": 0.15625,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.78125,
+        "x_min": 0.0625,
+        "y_max": 1.0,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.84375,
+        "x_min": 0.78125,
+        "y_max": 1.0,
+        "x_max": 0.875,
+        "score": 0.986
+      }
+    ]
+  },
+  {
+    "file": "54b0477703f0.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.55,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0,
+        "x_min": 0.03125,
+        "y_max": 0.71875,
+        "x_max": 0.25,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.71875,
+        "y_max": 0.8125,
+        "x_max": 1.0,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.75,
+        "x_min": 0.09375,
+        "y_max": 0.96875,
+        "x_max": 0.25,
+        "score": 0.995
+      },
+      {
+        "y_min": 0.4375,
+        "x_min": 0.03125,
+        "y_max": 0.5,
+        "x_max": 0.0625,
+        "score": 0.975
+      },
+      {
+        "y_min": 0.8125,
+        "x_min": 0.78125,
+        "y_max": 0.96875,
+        "x_max": 0.90625,
+        "score": 0.914
+      }
+    ]
+  },
+  {
+    "file": "56879061f46b.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.55,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0,
+        "x_min": 0.125,
+        "y_max": 0.4375,
+        "x_max": 0.25,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.78125,
+        "y_max": 0.5,
+        "x_max": 0.9375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.03125,
+        "y_max": 0.71875,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.75,
+        "y_max": 0.78125,
+        "x_max": 1.0,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.8125,
+        "x_min": 0.8125,
+        "y_max": 1.0,
+        "x_max": 0.90625,
+        "score": 1.0
+      }
+    ]
+  },
+  {
+    "file": "582e1aa79aa4.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.53,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.03125,
+        "x_min": 0.15625,
+        "y_max": 0.6875,
+        "x_max": 0.28125,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.09375,
+        "x_min": 0.75,
+        "y_max": 0.75,
+        "x_max": 0.96875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.78125,
+        "x_min": 0.0625,
+        "y_max": 1.0,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.0625,
+        "y_max": 0.6875,
+        "x_max": 0.15625,
+        "score": 0.974
+      },
+      {
+        "y_min": 0.84375,
+        "x_min": 0.78125,
+        "y_max": 1.0,
+        "x_max": 0.875,
+        "score": 0.962
+      }
+    ]
+  },
+  {
+    "file": "58b6cfbf4412.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.61,
+    "n_boxes": 1,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.53125,
+        "x_min": 0.4375,
+        "y_max": 0.5625,
+        "x_max": 0.46875,
+        "score": 0.514
+      }
+    ]
+  },
+  {
+    "file": "5c48806e9fed.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.6,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.375,
+        "x_min": 0.625,
+        "y_max": 0.78125,
+        "x_max": 1.0,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.4375,
+        "x_min": 0.03125,
+        "y_max": 0.5,
+        "x_max": 0.0625,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.1875,
+        "x_min": 0.5,
+        "y_max": 0.34375,
+        "x_max": 0.625,
+        "score": 0.98
+      },
+      {
+        "y_min": 0.0,
+        "x_min": 0.6875,
+        "y_max": 0.15625,
+        "x_max": 0.875,
+        "score": 0.893
+      },
+      {
+        "y_min": 0.8125,
+        "x_min": 0.65625,
+        "y_max": 0.96875,
+        "x_max": 0.875,
+        "score": 0.877
+      }
+    ]
+  },
+  {
+    "file": "5c9d3b4a91f6.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.54,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0,
+        "x_min": 0.125,
+        "y_max": 0.4375,
+        "x_max": 0.25,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.78125,
+        "y_max": 0.5,
+        "x_max": 0.9375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.4375,
+        "x_min": 0.03125,
+        "y_max": 0.71875,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.75,
+        "y_max": 0.78125,
+        "x_max": 1.0,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.8125,
+        "x_min": 0.71875,
+        "y_max": 1.0,
+        "x_max": 0.90625,
+        "score": 1.0
+      }
+    ]
+  },
+  {
+    "file": "62e7c868222d.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.54,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.03125,
+        "x_min": 0.125,
+        "y_max": 0.40625,
+        "x_max": 0.25,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.03125,
+        "y_max": 0.71875,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5625,
+        "x_min": 0.8125,
+        "y_max": 0.78125,
+        "x_max": 1.0,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.4375,
+        "x_min": 0.03125,
+        "y_max": 0.5,
+        "x_max": 0.0625,
+        "score": 0.958
+      },
+      {
+        "y_min": 0.8125,
+        "x_min": 0.78125,
+        "y_max": 0.96875,
+        "x_max": 0.90625,
+        "score": 0.859
+      }
+    ]
+  },
+  {
+    "file": "66cdb68845c6.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.6,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.375,
+        "x_min": 0.625,
+        "y_max": 0.78125,
+        "x_max": 1.0,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.4375,
+        "x_min": 0.03125,
+        "y_max": 0.5,
+        "x_max": 0.0625,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.1875,
+        "x_min": 0.5,
+        "y_max": 0.34375,
+        "x_max": 0.625,
+        "score": 0.988
+      },
+      {
+        "y_min": 0.8125,
+        "x_min": 0.65625,
+        "y_max": 0.96875,
+        "x_max": 0.875,
+        "score": 0.866
+      },
+      {
+        "y_min": 0.75,
+        "x_min": 0.09375,
+        "y_max": 1.0,
+        "x_max": 0.34375,
+        "score": 0.826
+      }
+    ]
+  },
+  {
+    "file": "711c535b0f81.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.55,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0,
+        "x_min": 0.125,
+        "y_max": 0.4375,
+        "x_max": 0.25,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.78125,
+        "y_max": 0.5,
+        "x_max": 0.9375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.03125,
+        "y_max": 0.71875,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.75,
+        "y_max": 0.78125,
+        "x_max": 1.0,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.8125,
+        "x_min": 0.78125,
+        "y_max": 1.0,
+        "x_max": 0.90625,
+        "score": 0.993
+      }
+    ]
+  },
+  {
+    "file": "7512e0e2c71b.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.53,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.03125,
+        "x_min": 0.15625,
+        "y_max": 0.6875,
+        "x_max": 0.28125,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.09375,
+        "x_min": 0.75,
+        "y_max": 0.75,
+        "x_max": 0.96875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.78125,
+        "x_min": 0.0625,
+        "y_max": 1.0,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.0625,
+        "y_max": 0.6875,
+        "x_max": 0.15625,
+        "score": 0.971
+      },
+      {
+        "y_min": 0.84375,
+        "x_min": 0.78125,
+        "y_max": 1.0,
+        "x_max": 0.875,
+        "score": 0.964
+      }
+    ]
+  },
+  {
+    "file": "76fabed303f4.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.55,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.03125,
+        "x_min": 0.125,
+        "y_max": 0.4375,
+        "x_max": 0.25,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.4375,
+        "x_min": 0.03125,
+        "y_max": 0.71875,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.71875,
+        "y_max": 0.78125,
+        "x_max": 0.96875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.8125,
+        "x_min": 0.8125,
+        "y_max": 1.0,
+        "x_max": 0.90625,
+        "score": 0.927
+      },
+      {
+        "y_min": 0.78125,
+        "x_min": 0.09375,
+        "y_max": 0.90625,
+        "x_max": 0.25,
+        "score": 0.918
+      }
+    ]
+  },
+  {
+    "file": "810e7ef4daeb.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.62,
+    "n_boxes": 3,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0,
+        "x_min": 0.34375,
+        "y_max": 0.09375,
+        "x_max": 0.4375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.34375,
+        "y_max": 0.15625,
+        "x_max": 0.4375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.375,
+        "y_max": 0.15625,
+        "x_max": 0.46875,
+        "score": 1.0
+      }
+    ]
+  },
+  {
+    "file": "8415cae3debd.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.53,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.03125,
+        "x_min": 0.15625,
+        "y_max": 0.6875,
+        "x_max": 0.28125,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.09375,
+        "x_min": 0.75,
+        "y_max": 0.75,
+        "x_max": 0.96875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.78125,
+        "x_min": 0.0625,
+        "y_max": 1.0,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.0625,
+        "y_max": 0.6875,
+        "x_max": 0.15625,
+        "score": 0.977
+      },
+      {
+        "y_min": 0.84375,
+        "x_min": 0.78125,
+        "y_max": 1.0,
+        "x_max": 0.875,
+        "score": 0.962
+      }
+    ]
+  },
+  {
+    "file": "8706f8f2bc3a.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.54,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.03125,
+        "x_min": 0.125,
+        "y_max": 0.6875,
+        "x_max": 0.3125,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.09375,
+        "x_min": 0.75,
+        "y_max": 0.75,
+        "x_max": 0.9375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.78125,
+        "x_min": 0.0625,
+        "y_max": 1.0,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.0625,
+        "y_max": 0.6875,
+        "x_max": 0.15625,
+        "score": 0.969
+      },
+      {
+        "y_min": 0.84375,
+        "x_min": 0.78125,
+        "y_max": 1.0,
+        "x_max": 0.875,
+        "score": 0.932
+      }
+    ]
+  },
+  {
+    "file": "8b375a3885ec.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.54,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0,
+        "x_min": 0.03125,
+        "y_max": 0.71875,
+        "x_max": 0.25,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.65625,
+        "y_max": 0.6875,
+        "x_max": 0.90625,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.4375,
+        "x_min": 0.8125,
+        "y_max": 0.78125,
+        "x_max": 1.0,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.75,
+        "x_min": 0.09375,
+        "y_max": 0.96875,
+        "x_max": 0.25,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.4375,
+        "x_min": 0.03125,
+        "y_max": 0.5,
+        "x_max": 0.0625,
+        "score": 0.965
+      }
+    ]
+  },
+  {
+    "file": "8cf7dca629ca.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.61,
+    "n_boxes": 3,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0625,
+        "x_min": 0.375,
+        "y_max": 0.15625,
+        "x_max": 0.46875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0,
+        "x_min": 0.34375,
+        "y_max": 0.09375,
+        "x_max": 0.4375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.34375,
+        "y_max": 0.15625,
+        "x_max": 0.4375,
+        "score": 1.0
+      }
+    ]
+  },
+  {
+    "file": "96ad3bf46808.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.61,
+    "n_boxes": 3,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0625,
+        "x_min": 0.34375,
+        "y_max": 0.15625,
+        "x_max": 0.4375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.03125,
+        "x_min": 0.3125,
+        "y_max": 0.125,
+        "x_max": 0.40625,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.3125,
+        "y_max": 0.15625,
+        "x_max": 0.40625,
+        "score": 1.0
+      }
+    ]
+  },
+  {
+    "file": "9dc9f2fff684.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.54,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.5,
+        "x_min": 0.03125,
+        "y_max": 0.71875,
+        "x_max": 0.1875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5625,
+        "x_min": 0.8125,
+        "y_max": 0.78125,
+        "x_max": 0.96875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.03125,
+        "x_min": 0.125,
+        "y_max": 0.4375,
+        "x_max": 0.28125,
+        "score": 0.994
+      },
+      {
+        "y_min": 0.75,
+        "x_min": 0.09375,
+        "y_max": 0.90625,
+        "x_max": 0.1875,
+        "score": 0.928
+      },
+      {
+        "y_min": 0.8125,
+        "x_min": 0.8125,
+        "y_max": 1.0,
+        "x_max": 0.90625,
+        "score": 0.851
+      }
+    ]
+  },
+  {
+    "file": "a2e855a394d1.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.53,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.03125,
+        "x_min": 0.15625,
+        "y_max": 0.6875,
+        "x_max": 0.28125,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.09375,
+        "x_min": 0.75,
+        "y_max": 0.75,
+        "x_max": 0.96875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.78125,
+        "x_min": 0.0625,
+        "y_max": 1.0,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.0625,
+        "y_max": 0.6875,
+        "x_max": 0.15625,
+        "score": 0.977
+      },
+      {
+        "y_min": 0.84375,
+        "x_min": 0.78125,
+        "y_max": 1.0,
+        "x_max": 0.875,
+        "score": 0.96
+      }
+    ]
+  },
+  {
+    "file": "ad564176765a.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.54,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.03125,
+        "x_min": 0.125,
+        "y_max": 0.6875,
+        "x_max": 0.3125,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.75,
+        "y_max": 0.75,
+        "x_max": 0.96875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.78125,
+        "x_min": 0.0625,
+        "y_max": 1.0,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.0625,
+        "y_max": 0.6875,
+        "x_max": 0.15625,
+        "score": 0.99
+      },
+      {
+        "y_min": 0.84375,
+        "x_min": 0.78125,
+        "y_max": 1.0,
+        "x_max": 0.875,
+        "score": 0.943
+      }
+    ]
+  },
+  {
+    "file": "c0d81a7f0836.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.61,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.84375,
+        "x_min": 0.96875,
+        "y_max": 0.90625,
+        "x_max": 1.0,
+        "score": 0.771
+      },
+      {
+        "y_min": 0.1875,
+        "x_min": 0.5625,
+        "y_max": 0.21875,
+        "x_max": 0.59375,
+        "score": 0.608
+      },
+      {
+        "y_min": 0.90625,
+        "x_min": 0.9375,
+        "y_max": 0.96875,
+        "x_max": 0.96875,
+        "score": 0.553
+      },
+      {
+        "y_min": 0.25,
+        "x_min": 0.65625,
+        "y_max": 0.28125,
+        "x_max": 0.6875,
+        "score": 0.536
+      },
+      {
+        "y_min": 0.96875,
+        "x_min": 0.96875,
+        "y_max": 1.0,
+        "x_max": 1.0,
+        "score": 0.526
+      }
+    ]
+  },
+  {
+    "file": "c5359b9df971.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.61,
+    "n_boxes": 3,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0625,
+        "x_min": 0.34375,
+        "y_max": 0.15625,
+        "x_max": 0.4375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.03125,
+        "x_min": 0.3125,
+        "y_max": 0.125,
+        "x_max": 0.40625,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.3125,
+        "y_max": 0.15625,
+        "x_max": 0.40625,
+        "score": 1.0
+      }
+    ]
+  },
+  {
+    "file": "cc4142f950d2.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.54,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.03125,
+        "x_min": 0.125,
+        "y_max": 0.6875,
+        "x_max": 0.3125,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.75,
+        "y_max": 0.75,
+        "x_max": 0.9375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.78125,
+        "x_min": 0.0625,
+        "y_max": 1.0,
+        "x_max": 0.21875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.5,
+        "x_min": 0.0625,
+        "y_max": 0.6875,
+        "x_max": 0.15625,
+        "score": 0.996
+      },
+      {
+        "y_min": 0.84375,
+        "x_min": 0.78125,
+        "y_max": 1.0,
+        "x_max": 0.875,
+        "score": 0.965
+      }
+    ]
+  },
+  {
+    "file": "e7b6b2c5a3c1.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.61,
+    "n_boxes": 3,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0,
+        "x_min": 0.34375,
+        "y_max": 0.09375,
+        "x_max": 0.4375,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.375,
+        "y_max": 0.15625,
+        "x_max": 0.46875,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.34375,
+        "y_max": 0.15625,
+        "x_max": 0.4375,
+        "score": 1.0
+      }
+    ]
+  },
+  {
+    "file": "e85ca2af8884.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.55,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0,
+        "x_min": 0.03125,
+        "y_max": 0.71875,
+        "x_max": 0.3125,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.78125,
+        "y_max": 0.5,
+        "x_max": 0.90625,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.46875,
+        "x_min": 0.71875,
+        "y_max": 0.78125,
+        "x_max": 1.0,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.4375,
+        "x_min": 0.03125,
+        "y_max": 0.5,
+        "x_max": 0.0625,
+        "score": 0.985
+      },
+      {
+        "y_min": 0.78125,
+        "x_min": 0.09375,
+        "y_max": 0.96875,
+        "x_max": 0.25,
+        "score": 0.92
+      }
+    ]
+  },
+  {
+    "file": "f1bc86f95628.jpg",
+    "verdict": "ANOMALY",
+    "confidence": 0.55,
+    "n_boxes": 5,
+    "status": "OK",
+    "boxes": [
+      {
+        "y_min": 0.0,
+        "x_min": 0.03125,
+        "y_max": 0.71875,
+        "x_max": 0.25,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.0625,
+        "x_min": 0.65625,
+        "y_max": 0.78125,
+        "x_max": 1.0,
+        "score": 1.0
+      },
+      {
+        "y_min": 0.75,
+        "x_min": 0.09375,
+        "y_max": 0.96875,
+        "x_max": 0.25,
+        "score": 0.994
+      },
+      {
+        "y_min": 0.5625,
+        "x_min": 0.375,
+        "y_max": 0.65625,
+        "x_max": 0.5,
+        "score": 0.958
+      },
+      {
+        "y_min": 0.4375,
+        "x_min": 0.03125,
+        "y_max": 0.5,
+        "x_max": 0.0625,
+        "score": 0.955
+      }
+    ]
+  }
+]

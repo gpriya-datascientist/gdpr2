@@ -109,16 +109,51 @@ def boxes_from_distances(dists: np.ndarray, threshold: float):
     grid = dists.reshape(PATCH_GRID, PATCH_GRID)
     mask = grid > threshold
     if not mask.any():
-        mask = np.zeros_like(mask)
-        top = np.argsort(grid, axis=None)[-MAX_BOXES:]
-        mask[np.unravel_index(top, grid.shape)] = True
+        # Use top 5% most anomalous patches
+        top_n = max(1, int(PATCH_GRID * PATCH_GRID * 0.05))
+        top_idx = np.argsort(grid, axis=None)[-top_n:]
+        mask = np.zeros_like(grid, dtype=bool)
+        mask[np.unravel_index(top_idx, grid.shape)] = True
+
     boxes = []
     for comp in _components(mask):
-        r0,r1 = min(r for r,_ in comp), max(r for r,_ in comp)
-        c0,c1 = min(c for _,c in comp), max(c for _,c in comp)
-        score = float(np.clip(max(float(grid[r,c]) for r,c in comp)/(2*threshold),0,1)) if threshold>0 else 1.0
-        boxes.append({"y_min":r0/PATCH_GRID,"x_min":c0/PATCH_GRID,
-                      "y_max":(r1+1)/PATCH_GRID,"x_max":(c1+1)/PATCH_GRID,"score":round(score,3)})
+        r0 = min(r for r, _ in comp)
+        r1 = max(r for r, _ in comp)
+        c0 = min(c for _, c in comp)
+        c1 = max(c for _, c in comp)
+
+        # Skip boxes that are too large (>40% of image in either dimension)
+        box_w = (c1 - c0 + 1) / PATCH_GRID
+        box_h = (r1 - r0 + 1) / PATCH_GRID
+        if box_w > 0.4 and box_h > 0.4:
+            continue  # skip full-image boxes
+
+        score = float(np.clip(
+            max(float(grid[r, c]) for r, c in comp) / (2 * threshold), 0, 1
+        )) if threshold > 0 else 1.0
+        boxes.append({
+            "y_min": r0 / PATCH_GRID,
+            "x_min": c0 / PATCH_GRID,
+            "y_max": (r1 + 1) / PATCH_GRID,
+            "x_max": (c1 + 1) / PATCH_GRID,
+            "score": round(score, 3)
+        })
+
+    # If all boxes were filtered out, use top 3 individual patches
+    if not boxes:
+        top3 = np.argsort(grid, axis=None)[-3:]
+        for idx in top3:
+            r, c = np.unravel_index(idx, grid.shape)
+            # Make a small box around the patch
+            r0, r1 = max(0, r-1), min(PATCH_GRID-1, r+1)
+            c0, c1 = max(0, c-1), min(PATCH_GRID-1, c+1)
+            score = float(np.clip(grid[r, c] / (2 * threshold), 0, 1)) if threshold > 0 else 1.0
+            boxes.append({
+                "y_min": r0 / PATCH_GRID, "x_min": c0 / PATCH_GRID,
+                "y_max": (r1+1) / PATCH_GRID, "x_max": (c1+1) / PATCH_GRID,
+                "score": round(score, 3)
+            })
+
     boxes.sort(key=lambda b: b["score"], reverse=True)
     return boxes[:MAX_BOXES]
 
