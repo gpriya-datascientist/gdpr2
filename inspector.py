@@ -1,4 +1,4 @@
-"""
+﻿"""
 PressVision2 Inspector
 Primary: DINOv2 + logistic regression (~50ms, trained on your images)
 Fallback: llava:7b via Ollama (~30s)
@@ -23,62 +23,62 @@ BASE_DIR = Path(__file__).parent
 PROJECTS = {
     "bsh": {
         "name": "BSH Crack Detection",
-        "description": "BSH metal press tool edge — detect cracks",
+        "description": "BSH metal press tool edge â€” detect cracks",
         "part_name": "BSH Metal Press Tool",
         "description_hint": "Dark irregular cracks breaking the smooth metal surface are ANOMALY. Bright glare and reflections are GOOD.",
-        "good_dir": "data/bsh/good",
-        "bad_dir":  "data/bsh/bad",
+        "good_dir": "data/BSH_Crack_Detection/good",
+        "bad_dir":  "data/BSH_Crack_Detection/bad",
         "control_param":  "left_door_stroke_rate",
         "control_action": "reduce",
         "control_pct":    15,
     },
     "klinken": {
         "name": "Klinken-Rack (All)",
-        "description": "Press clamp rack — all angles",
+        "description": "Press clamp rack â€” all angles",
         "part_name": "Press Clamp Transport Rack",
         "description_hint": "GOOD: max 1 clamp extended per tower or all retracted. ANOMALY: multiple clamps extended per tower.",
-        "good_dir": "data/klinken/good",
-        "bad_dir":  "data/klinken/bad",
+        "good_dir": "data/Klinken_Rack_Position/good",
+        "bad_dir":  "data/Klinken_Rack_Position/bad",
         "control_param":  "cycle_time_s",
         "control_action": "increase",
         "control_pct":    10,
     },
     "klinken_loaded": {
         "name": "Klinken-Rack Loaded (KS1-5)",
-        "description": "Loaded rack — detect too many clamps extended",
+        "description": "Loaded rack â€” detect too many clamps extended",
         "part_name": "Press Clamp Transport Rack (Loaded)",
         "description_hint": "GOOD: max 1 clamp extended per tower. ANOMALY: multiple clamps extended per tower on loaded rack.",
-        "good_dir": "data/klinken_loaded/good",
-        "bad_dir":  "data/klinken_loaded/bad",
+        "good_dir": "data/Klinken_Loaded_Rack/good",
+        "bad_dir":  "data/Klinken_Loaded_Rack/bad",
         "control_param":  "cycle_time_s",
         "control_action": "increase",
         "control_pct":    10,
     },
     "klinken_empty": {
         "name": "Klinken-Rack Empty (KS4/KS6)",
-        "description": "Empty rack — detect all clamps extended",
+        "description": "Empty rack â€” detect all clamps extended",
         "part_name": "Press Clamp Transport Rack (Empty)",
         "description_hint": "GOOD: all clamps retracted on empty rack. ANOMALY: all clamps extended on empty rack.",
-        "good_dir": "data/klinken_empty/good",
-        "bad_dir":  "data/klinken_empty/bad",
+        "good_dir": "data/Klinken_Empty_Rack/good",
+        "bad_dir":  "data/Klinken_Empty_Rack/bad",
         "control_param":  "cycle_time_s",
         "control_action": "increase",
         "control_pct":    10,
     },
     "casting": {
         "name": "Casting Defect Detection",
-        "description": "Industrial casting impeller — detect surface defects",
+        "description": "Industrial casting impeller â€” detect surface defects",
         "part_name": "Cast Impeller Part",
         "description_hint": "GOOD: smooth uniform casting surface. ANOMALY: surface defects, pits, cracks, or deformations on the casting.",
-        "good_dir": "data/casting/good",
-        "bad_dir":  "data/casting/bad",
+        "good_dir": "data/Casting_Defect_Detection/good",
+        "bad_dir":  "data/Casting_Defect_Detection/bad",
         "control_param":  "assembly_speed_ms",
         "control_action": "reduce",
         "control_pct":    10,
     },
 }
 
-# ── DINOv2 models (trained on startup) ───────────────────────────────────
+# â”€â”€ DINOv2 models (trained on startup) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 _embedder = None
 _models: dict[str, dict] = {}
 
@@ -133,7 +133,7 @@ async def inspect_image(image_bytes: bytes, project_id: str = "bsh",
     proj = PROJECTS.get(project_id, PROJECTS["bsh"])
     start = time.perf_counter()
 
-    # ── Primary: DINOv2 fast local classifier (~50ms) ─────────────────────
+    # â”€â”€ Primary: DINOv2 fast local classifier (~50ms) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     try:
         model = await asyncio.to_thread(_get_model, project_id)
         if model is not None:
@@ -150,7 +150,7 @@ async def inspect_image(image_bytes: bytes, project_id: str = "bsh",
     except Exception as e:
         log.warning("DINOv2 failed: %s", e)
 
-    # ── Fallback: llava via Ollama ─────────────────────────────────────────
+    # â”€â”€ Fallback: llava via Ollama â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     r = await _try_local(image_bytes, proj, mime)
     if r:
         r.project = project_id
@@ -241,3 +241,4 @@ def _get_suggestion(result, proj):
             "change":f"{'-' if action=='reduce' else '+'}{pct}%",
             "command":f"{'Reduce' if action=='reduce' else 'Increase'} {label} by {pct}%",
             "risk":"medium" if pct>12 else "low"}
+
