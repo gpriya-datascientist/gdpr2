@@ -107,11 +107,13 @@ header{background:#1e3a5f;color:white;padding:16px 32px;display:flex;align-items
     <div class="card">
       <h3>Vision Model</h3>
       <select id="model-sel" style="width:100%;padding:8px;border-radius:6px;border:1px solid #e2e8f0;font-size:12px;" onchange="setModel(this.value)">
-        <option value="llava:7b" selected>llava:7b (fast ~30s)</option>
-        <option value="qwen2.5vl:7b">qwen2.5vl:7b (slow ~3min first)</option>
-        <option value="llava:13b">llava:13b (slow ~2min)</option>
+        <option value="dinov2" selected>⚡ DINOv2 (default ~50ms)</option>
+        <option value="llava:7b">🦙 llava:7b (~30s)</option>
+        <option value="llava:13b">🦙 llava:13b (~2min)</option>
+        <option value="qwen2.5vl:7b">🔮 qwen2.5vl:7b (~3min first)</option>
+        <option value="minicpm-v">🔬 minicpm-v (~45s, industrial)</option>
       </select>
-      <div style="font-size:11px;color:#94a3b8;margin-top:6px;" id="model-note">llava:7b is already loaded — fastest option</div>
+      <div style="font-size:11px;color:#94a3b8;margin-top:6px;" id="model-note">DINOv2 — trained on your dataset, fastest &amp; most accurate</div>
     </div>
     <div class="card">
       <h3>Session</h3>
@@ -138,14 +140,18 @@ header{background:#1e3a5f;color:white;padding:16px 32px;display:flex;align-items
 <script>
 const API='http://127.0.0.1:8004';
 let project='bsh', stats={total:0,good:0,bad:0}, history=[];
-let visionModel='llava:7b';
+let visionModel='dinov2';
 
 function setModel(m){
   visionModel=m;
-  const notes={'llava:7b':'llava:7b is already loaded — fastest option',
-               'qwen2.5vl:7b':'First call loads 6GB — wait 3 min, then fast',
-               'llava:13b':'First call loads 8GB — wait 2-3 min'};
-  document.getElementById('model-note').textContent=notes[m]||'';
+  const notes={
+    'dinov2':      '⚡ DINOv2 — trained on your dataset, 50ms, most accurate',
+    'llava:7b':    '🦙 llava:7b — already loaded, ~30s, general vision',
+    'llava:13b':   '🦙 llava:13b — already loaded, ~2min, better than 7b',
+    'qwen2.5vl:7b':'🔮 qwen2.5vl — already loaded, first call ~3min then faster',
+    'minicpm-v':   '🔬 minicpm-v — pull first, ~45s, fine-grained industrial vision'
+  };
+  document.getElementById('model-note').textContent = notes[m]||'';
 }
 
 checkHealth(); setInterval(checkHealth,15000); loadStats();

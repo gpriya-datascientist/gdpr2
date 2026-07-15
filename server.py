@@ -50,7 +50,7 @@ async def inspect(
     if not mime.startswith("image/"):
         raise HTTPException(status_code=400, detail="Must be an image")
     # Override model if specified
-    if model:
+    if model and model != 'dinov2':
         import inspector as insp
         insp.VISION_MODEL = model
     # Build image_path so annotation_utils can find matching XML
