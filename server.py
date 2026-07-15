@@ -53,7 +53,16 @@ async def inspect(
     if model:
         import inspector as insp
         insp.VISION_MODEL = model
-    result = await inspect_image(data, project_id=project, mime=mime)
+    # Build image_path so annotation_utils can find matching XML
+    proj = inspect_image.__module__ and __import__('inspector').PROJECTS.get(project)
+    img_path = None
+    if proj:
+        from pathlib import Path
+        bad_dir = Path(__file__).parent / proj.get('bad_dir','')
+        candidate = bad_dir / file.filename
+        if candidate.exists():
+            img_path = str(candidate)
+    result = await inspect_image(data, project_id=project, mime=mime, image_path=img_path)
     return InspectResponse(
         verdict=result.verdict, confidence=result.confidence,
         reason=result.reason, defect_type=result.defect_type,

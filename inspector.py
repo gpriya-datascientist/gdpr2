@@ -129,7 +129,8 @@ class InspectionResult:
 
 
 async def inspect_image(image_bytes: bytes, project_id: str = "bsh",
-                        mime: str = "image/jpeg") -> InspectionResult:
+                        mime: str = "image/jpeg",
+                        image_path: str = None) -> InspectionResult:
     proj = PROJECTS.get(project_id, PROJECTS["bsh"])
     start = time.perf_counter()
 
@@ -139,13 +140,10 @@ async def inspect_image(image_bytes: bytes, project_id: str = "bsh",
         if model is not None:
             from embedder import predict
             from annotation_utils import load_annotations
-            import tempfile, os as _os
             verdict, conf, dinov2_boxes, reason = await asyncio.to_thread(
                 predict, model, _get_embedder(), image_bytes)
-            with tempfile.NamedTemporaryFile(suffix='.jpg', delete=False) as tmp:
-                tmp.write(image_bytes); tmp_path = tmp.name
-            xml_boxes = load_annotations(tmp_path)
-            _os.unlink(tmp_path)
+            # Use XML annotation if image_path provided and XML exists
+            xml_boxes = load_annotations(image_path) if image_path else None
             boxes = xml_boxes if xml_boxes else dinov2_boxes
             box_src = "annotation" if xml_boxes else "dinov2"
             latency = (time.perf_counter()-start)*1000
