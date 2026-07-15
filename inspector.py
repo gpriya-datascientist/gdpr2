@@ -138,12 +138,20 @@ async def inspect_image(image_bytes: bytes, project_id: str = "bsh",
         model = await asyncio.to_thread(_get_model, project_id)
         if model is not None:
             from embedder import predict
-            verdict, conf, boxes, reason = await asyncio.to_thread(
+            from annotation_utils import load_annotations
+            import tempfile, os as _os
+            verdict, conf, dinov2_boxes, reason = await asyncio.to_thread(
                 predict, model, _get_embedder(), image_bytes)
+            with tempfile.NamedTemporaryFile(suffix='.jpg', delete=False) as tmp:
+                tmp.write(image_bytes); tmp_path = tmp.name
+            xml_boxes = load_annotations(tmp_path)
+            _os.unlink(tmp_path)
+            boxes = xml_boxes if xml_boxes else dinov2_boxes
+            box_src = "annotation" if xml_boxes else "dinov2"
             latency = (time.perf_counter()-start)*1000
             r = InspectionResult(verdict=verdict, confidence=conf, reason=reason,
                 defect_type="crack" if verdict=="ANOMALY" else None,
-                backend_used="dinov2", latency_ms=latency,
+                backend_used=f"dinov2+{box_src}", latency_ms=latency,
                 project=project_id, boxes=boxes)
             r.control_suggestion = _get_suggestion(r, proj)
             return r
@@ -241,4 +249,5 @@ def _get_suggestion(result, proj):
             "change":f"{'-' if action=='reduce' else '+'}{pct}%",
             "command":f"{'Reduce' if action=='reduce' else 'Increase'} {label} by {pct}%",
             "risk":"medium" if pct>12 else "low"}
+
 

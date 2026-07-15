@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PressVision2 — Annotator</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:system-ui,sans-serif;background:#1a1a2e;color:#e2e8f0;height:100vh;display:flex;flex-direction:column;}
+header{background:#16213e;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2d3748;}
+.logo{font-size:15px;font-weight:700;color:#60a5fa;}
+.logo span{color:#f472b6;}
+.hbtns{display:flex;gap:8px;}
+.hbtn{padding:5px 12px;border-radius:6px;border:1px solid #4a5568;background:transparent;color:#a0aec0;font-size:12px;cursor:pointer;}
+.hbtn:hover{background:#2d3748;color:#e2e8f0;}
+.hbtn.primary{background:#3b82f6;border-color:#3b82f6;color:white;}
+.hbtn.primary:hover{background:#2563eb;}
+.hbtn.danger{background:#ef4444;border-color:#ef4444;color:white;}
+.workspace{display:flex;flex:1;overflow:hidden;}
+.file-panel{width:200px;background:#16213e;border-right:1px solid #2d3748;display:flex;flex-direction:column;overflow:hidden;}
+.panel-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#718096;padding:10px 12px 6px;}
+.file-list{flex:1;overflow-y:auto;padding:4px;}
+.file-item{padding:6px 8px;border-radius:5px;cursor:pointer;font-size:12px;display:flex;align-items:center;gap:6px;color:#a0aec0;}
+.file-item:hover{background:#2d3748;color:#e2e8f0;}
+.file-item.active{background:#1e3a5f;color:#60a5fa;}
+.file-item .dot{width:6px;height:6px;border-radius:50%;background:#4a5568;flex-shrink:0;}
+.file-item.annotated .dot{background:#48bb78;}
+.file-item.current .dot{background:#f59e0b;}
+.canvas-area{flex:1;display:flex;align-items:center;justify-content:center;background:#0f1117;position:relative;overflow:hidden;}
+.canvas-wrap{position:relative;display:inline-block;}
+#img{display:block;max-width:100%;max-height:calc(100vh - 120px);}
+#canvas{position:absolute;top:0;left:0;}
+.right-panel{width:240px;background:#16213e;border-left:1px solid #2d3748;display:flex;flex-direction:column;overflow:hidden;}
+.section{padding:10px 12px;border-bottom:1px solid #2d3748;}
+.section h3{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#718096;margin-bottom:8px;}
+.class-btns{display:flex;flex-wrap:wrap;gap:4px;}
+.cls-btn{padding:3px 8px;border-radius:4px;border:1px solid;font-size:11px;font-weight:600;cursor:pointer;transition:opacity .15s;}
+.cls-btn.active{opacity:1;}
+.cls-btn:not(.active){opacity:.5;}
+.cls-btn:hover{opacity:1;}
+.custom-class{display:flex;gap:4px;margin-top:6px;}
+.custom-class input{flex:1;background:#0f1117;border:1px solid #4a5568;border-radius:4px;padding:4px 6px;font-size:11px;color:#e2e8f0;}
+.ann-list{flex:1;overflow-y:auto;padding:8px;}
+.ann-row{display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:5px;border:1px solid #2d3748;margin-bottom:4px;cursor:pointer;background:#0f1117;}
+.ann-row:hover{border-color:#4a5568;}
+.ann-row.sel{border-color:#3b82f6;background:#1e3a5f;}
+.ann-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.ann-info{flex:1;min-width:0;}
+.ann-name{font-size:12px;font-weight:600;}
+.ann-xy{font-size:10px;color:#718096;}
+.del{width:16px;height:16px;border:none;background:none;color:#718096;cursor:pointer;font-size:14px;line-height:1;border-radius:3px;}
+.del:hover{background:#742a2a;color:#fc8181;}
+.xml-section{padding:10px 12px;border-top:1px solid #2d3748;}
+.xml-pre{background:#0f1117;border-radius:5px;padding:8px;font-size:10px;font-family:monospace;color:#9ae6b4;max-height:160px;overflow:auto;white-space:pre;}
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#4a5568;gap:8px;}
+.empty-icon{font-size:48px;}
+.shortcut{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:11px;color:#4a5568;background:#1a1a2e;padding:3px 10px;border-radius:20px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Press<span>Vision</span>2 Annotator</div>
+  <div class="hbtns">
+    <button class="hbtn" onclick="document.getElementById('dirInput').click()">📁 Load folder</button>
+    <input type="file" id="dirInput" webkitdirectory multiple style="display:none" onchange="loadFolder(this)">
+    <button class="hbtn" onclick="exportAll()">💾 Export all XML</button>
+    <button class="hbtn primary" onclick="exportCurrentXML()">⬇ Export XML</button>
+  </div>
+</header>
+<div class="workspace">
+  <div class="file-panel">
+    <div class="panel-title">Images</div>
+    <div class="file-list" id="fileList">
+      <div style="padding:12px;font-size:11px;color:#4a5568;text-align:center;">Load a folder to begin</div>
+    </div>
+  </div>
+  <div class="canvas-area" id="canvasArea">
+    <div class="empty" id="emptyState">
+      <div class="empty-icon">🖼</div>
+      <div>Load a folder of images</div>
+      <div style="font-size:12px;">then click an image to annotate</div>
+    </div>
+    <div class="canvas-wrap" id="canvasWrap" style="display:none;">
+      <img id="img" alt="">
+      <canvas id="canvas"></canvas>
+    </div>
+    <div class="shortcut" id="shortcut" style="display:none;">Draw boxes • Del = delete selected • Z = undo</div>
+  </div>
+  <div class="right-panel">
+    <div class="section">
+      <h3>Label class</h3>
+      <div class="class-btns" id="classBtns"></div>
+      <div class="custom-class">
+        <input type="text" id="customClass" placeholder="custom class..." value="">
+        <button class="hbtn" onclick="addCustomClass()" style="padding:3px 8px;font-size:11px;">+</button>
+      </div>
+    </div>
+    <div class="section" style="display:flex;align-items:center;justify-content:space-between;">
+      <h3 style="margin:0;">Annotations (<span id="annCount">0</span>)</h3>
+      <button class="hbtn danger" onclick="clearAll()" style="padding:2px 8px;font-size:11px;">Clear</button>
+    </div>
+    <div class="ann-list" id="annList"></div>
+    <div class="xml-section" id="xmlSection" style="display:none;">
+      <div style="font-size:11px;font-weight:600;color:#718096;margin-bottom:6px;">XML preview</div>
+      <pre class="xml-pre" id="xmlPre"></pre>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script>
+const CLASSES = [
+  {name:'crack',       color:'#ef4444'},
+  {name:'deformation', color:'#f59e0b'},
+  {name:'wrong_pos',   color:'#8b5cf6'},
+  {name:'scratch',     color:'#06b6d4'},
+  {name:'good',        color:'#22c55e'},
+];
+let classes = [...CLASSES];
+let activeClass = classes[0];
+let files = {}, currentFile = null;
+let annotations = {}, drawing = false;
+let sx = 0, sy = 0, selected = -1;
+let imgW = 0, imgH = 0;
+const img = document.getElementById('img');
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+function renderClassBtns(){
+  const c = document.getElementById('classBtns');
+  c.innerHTML = classes.map(cl => `
+    <button class="cls-btn${cl===activeClass?' active':''}"
+      style="border-color:${cl.color};color:${cl.color};background:${cl===activeClass?cl.color+'33':'transparent'}"
+      onclick="setClass('${cl.name}')">${cl.name}</button>`).join('');
+}
+function setClass(name){ activeClass = classes.find(c=>c.name===name)||classes[0]; renderClassBtns(); }
+function addCustomClass(){
+  const v = document.getElementById('customClass').value.trim();
+  if(!v) return;
+  const colors = ['#ff6b6b','#ffd93d','#6bcb77','#4d96ff','#ff922b','#cc5de8'];
+  if(!classes.find(c=>c.name===v)){
+    classes.push({name:v, color:colors[classes.length%colors.length]});
+    renderClassBtns();
+  }
+  setClass(v);
+  document.getElementById('customClass').value='';
+}
+renderClassBtns();
+
+function loadFolder(input){
+  const list = Array.from(input.files).filter(f=>f.type.startsWith('image/'));
+  list.forEach(f=>{ files[f.name]=f; if(!annotations[f.name]) annotations[f.name]=[]; });
+  renderFileList();
+  if(list.length) loadImage(list[0].name);
+}
+
+function renderFileList(){
+  const names = Object.keys(files).sort();
+  document.getElementById('fileList').innerHTML = names.map(n => {
+    const anns = annotations[n]||[];
+    const cls = 'file-item'+(n===currentFile?' active':'')+(anns.length?' annotated':'');
+    return `<div class="${cls}" onclick="loadImage('${n}')">
+      <div class="dot"></div>${n.length>22?n.slice(0,20)+'…':n}</div>`;
+  }).join('') || '<div style="padding:12px;font-size:11px;color:#4a5568;text-align:center;">No images</div>';
+}
+
+function loadImage(name){
+  currentFile = name;
+  const file = files[name];
+  const url = URL.createObjectURL(file);
+  img.onload = () => {
+    imgW=img.naturalWidth; imgH=img.naturalHeight;
+    document.getElementById('canvasWrap').style.display='inline-block';
+    document.getElementById('emptyState').style.display='none';
+    document.getElementById('shortcut').style.display='block';
+    canvas.width=img.offsetWidth; canvas.height=img.offsetHeight;
+    selected=-1; renderAll(); renderSidebar();
+  };
+  img.src=url;
+  renderFileList();
+}
+
+new ResizeObserver(()=>{
+  if(!img.offsetWidth||!currentFile) return;
+  canvas.width=img.offsetWidth; canvas.height=img.offsetHeight;
+  renderAll();
+}).observe(document.getElementById('canvasArea'));
+
+canvas.addEventListener('mousedown',e=>{
+  if(!currentFile) return;
+  const r=canvas.getBoundingClientRect();
+  sx=e.clientX-r.left; sy=e.clientY-r.top;
+  // check if clicking existing box
+  const anns=annotations[currentFile]||[];
+  const scX=canvas.width/imgW, scY=canvas.height/imgH;
+  for(let i=anns.length-1;i>=0;i--){
+    const a=anns[i];
+    if(sx>=a.xmin*scX&&sx<=a.xmax*scX&&sy>=a.ymin*scY&&sy<=a.ymax*scY){
+      selected=i; renderAll(); renderSidebar(); return;
+    }
+  }
+  selected=-1; drawing=true;
+});
+canvas.addEventListener('mousemove',e=>{
+  if(!drawing) return;
+  const r=canvas.getBoundingClientRect();
+  const cx=e.clientX-r.left, cy=e.clientY-r.top;
+  renderAll();
+  ctx.strokeStyle=activeClass.color;
+  ctx.lineWidth=2; ctx.setLineDash([5,3]);
+  ctx.strokeRect(Math.min(sx,cx),Math.min(sy,cy),Math.abs(cx-sx),Math.abs(cy-sy));
+  ctx.setLineDash([]);
+});
+canvas.addEventListener('mouseup',e=>{
+  if(!drawing){return;} drawing=false;
+  const r=canvas.getBoundingClientRect();
+  const cx=e.clientX-r.left, cy=e.clientY-r.top;
+  const bx=Math.min(sx,cx),by=Math.min(sy,cy),bw=Math.abs(cx-sx),bh=Math.abs(cy-sy);
+  if(bw<8||bh<8){renderAll();return;}
+  const scX=imgW/canvas.width, scY=imgH/canvas.height;
+  if(!annotations[currentFile]) annotations[currentFile]=[];
+  annotations[currentFile].push({
+    name:activeClass.name, color:activeClass.color,
+    xmin:Math.round(bx*scX), ymin:Math.round(by*scY),
+    xmax:Math.round((bx+bw)*scX), ymax:Math.round((by+bh)*scY)
+  });
+  selected=annotations[currentFile].length-1;
+  renderAll(); renderSidebar(); renderFileList();
+});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Delete'&&selected>=0&&currentFile){
+    annotations[currentFile].splice(selected,1);
+    selected=-1; renderAll(); renderSidebar(); renderFileList();
+  }
+  if((e.key==='z'||e.key==='Z')&&currentFile){
+    const a=annotations[currentFile]||[];
+    if(a.length){a.pop(); selected=-1; renderAll(); renderSidebar(); renderFileList();}
+  }
+});
+
+function renderAll(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const anns=annotations[currentFile]||[];
+  const scX=canvas.width/imgW, scY=canvas.height/imgH;
+  anns.forEach((a,i)=>{
+    const x=a.xmin*scX,y=a.ymin*scY,w=(a.xmax-a.xmin)*scX,h=(a.ymax-a.ymin)*scY;
+    ctx.strokeStyle=a.color; ctx.lineWidth=i===selected?3:1.5;
+    if(i===selected){ctx.setLineDash([]);} else {ctx.setLineDash([]);}
+    ctx.strokeRect(x,y,w,h);
+    ctx.fillStyle=a.color+(i===selected?'33':'18');
+    ctx.fillRect(x,y,w,h);
+    ctx.font='bold 11px sans-serif';
+    const lw=ctx.measureText(a.name).width+8;
+    ctx.fillStyle=a.color; ctx.setLineDash([]);
+    ctx.fillRect(x,y>16?y-16:y+h,lw,16);
+    ctx.fillStyle='#fff'; ctx.fillText(a.name,x+4,y>16?y-4:y+h+12);
+  });
+}
+
+function renderSidebar(){
+  const anns=annotations[currentFile]||[];
+  document.getElementById('annCount').textContent=anns.length;
+  document.getElementById('annList').innerHTML=anns.map((a,i)=>`
+    <div class="ann-row${i===selected?' sel':''}" onclick="selectAnn(${i})">
+      <div class="ann-dot" style="background:${a.color}"></div>
+      <div class="ann-info">
+        <div class="ann-name">${a.name}</div>
+        <div class="ann-xy">${a.xmin},${a.ymin}→${a.xmax},${a.ymax}</div>
+      </div>
+      <button class="del" onclick="delAnn(event,${i})">×</button>
+    </div>`).join('')||'<div style="font-size:11px;color:#4a5568;padding:8px;text-align:center;">No annotations yet</div>';
+  updateXMLPreview();
+}
+
+function selectAnn(i){selected=i; renderAll(); renderSidebar();}
+function delAnn(e,i){e.stopPropagation();annotations[currentFile].splice(i,1);selected=-1;renderAll();renderSidebar();renderFileList();}
+function clearAll(){if(!currentFile)return;annotations[currentFile]=[];selected=-1;renderAll();renderSidebar();renderFileList();}
+
+function buildXML(fname){
+  const anns=annotations[fname]||[];
+  const objs=anns.map(a=>`  <object>
+    <name>${a.name}</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>${a.xmin}</xmin>
+      <ymin>${a.ymin}</ymin>
+      <xmax>${a.xmax}</xmax>
+      <ymax>${a.ymax}</ymax>
+    </bndbox>
+  </object>`).join('\n');
+  const f=files[fname]; const sz=`${imgW}x${imgH}`;
+  return `<annotation>
+  <folder>annotations</folder>
+  <filename>${fname}</filename>
+  <source><database>PressVision2</database></source>
+  <size><width>${imgW}</width><height>${imgH}</height><depth>1</depth></size>
+  <segmented>0</segmented>
+${objs}
+</annotation>`;
+}
+
+function updateXMLPreview(){
+  const anns=annotations[currentFile]||[];
+  if(!anns.length){document.getElementById('xmlSection').style.display='none';return;}
+  document.getElementById('xmlSection').style.display='block';
+  document.getElementById('xmlPre').textContent=buildXML(currentFile);
+}
+
+function exportCurrentXML(){
+  if(!currentFile||(annotations[currentFile]||[]).length===0){alert('No annotations for current image');return;}
+  downloadXML(currentFile, buildXML(currentFile));
+}
+
+function exportAll(){
+  const annotated=Object.keys(annotations).filter(k=>(annotations[k]||[]).length>0);
+  if(!annotated.length){alert('No annotations to export');return;}
+  annotated.forEach(fname=>{
+    // Need imgW/H for each file - only current is accurate
+    // For others, use a temporary image
+    if(fname===currentFile){ downloadXML(fname, buildXML(fname)); }
+    else {
+      const tmpImg=new Image();
+      tmpImg.onload=()=>{
+        imgW=tmpImg.naturalWidth; imgH=tmpImg.naturalHeight;
+        downloadXML(fname, buildXML(fname));
+      };
+      tmpImg.src=URL.createObjectURL(files[fname]);
+    }
+  });
+}
+
+function downloadXML(fname, xml){
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([xml],{type:'application/xml'}));
+  a.download=fname.replace(/\.[^.]+$/,'')+'.xml';
+  a.click();
+}
+</script>
