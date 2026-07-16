@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PressVision2 — Model Comparison</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:system-ui,sans-serif;background:#f1f5f9;}
+header{background:#1e3a5f;color:white;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-size:18px;font-weight:800;}.logo span{color:#60a5fa;}
+header a{color:#93c5fd;font-size:13px;text-decoration:none;}
+.main{max-width:1060px;margin:28px auto;padding:0 24px;}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+.kpi{background:white;border-radius:10px;padding:16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.07);}
+.kpi-label{font-size:12px;color:#64748b;margin-bottom:4px;}
+.kpi-val{font-size:28px;font-weight:700;}
+.kpi-sub{font-size:11px;color:#94a3b8;margin-top:3px;}
+.card{background:white;border-radius:10px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.07);margin-bottom:20px;}
+.card-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#64748b;margin-bottom:14px;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#64748b;}
+.leg-dot{width:10px;height:10px;border-radius:2px;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{text-align:left;padding:8px 10px;font-weight:600;color:#64748b;border-bottom:1px solid #e2e8f0;font-size:11px;text-transform:uppercase;}
+td{padding:9px 10px;border-bottom:1px solid #f1f5f9;color:#334155;}
+tr:last-child td{border:none;}
+.badge{padding:3px 8px;border-radius:5px;font-size:12px;font-weight:700;display:inline-block;}
+.bg{background:#ecfdf5;color:#065f46;}
+.by{background:#fefce8;color:#854d0e;}
+.br{background:#fef2f2;color:#991b1b;}
+.vit{background:#eff6ff;color:#1d4ed8;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;}
+.vlm{background:#f5f3ff;color:#6d28d9;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Press<span>Vision</span>2</div>
+  <a href="index.html">← Back to Inspection</a>
+</header>
+<div class="main">
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-label">DINOv2 (ViT)</div><div class="kpi-val" style="color:#1d4ed8">93%</div><div class="kpi-sub">50ms · 111/121 overall</div></div>
+    <div class="kpi"><div class="kpi-label">minicpm-v (VLM)</div><div class="kpi-val" style="color:#065f46">97%</div><div class="kpi-sub">~45s · best VLM accuracy</div></div>
+    <div class="kpi"><div class="kpi-label">llava:7b (VLM)</div><div class="kpi-val" style="color:#854d0e">95%</div><div class="kpi-sub">~30s · fastest VLM</div></div>
+    <div class="kpi"><div class="kpi-label">qwen2.5vl (VLM)</div><div class="kpi-val" style="color:#991b1b">0%</div><div class="kpi-sub">API endpoint fix needed</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Accuracy by project — all models</div>
+    <div class="legend">
+      <div class="leg-item"><div class="leg-dot" style="background:#2a78d6"></div>DINOv2 (ViT)</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#008300"></div>minicpm-v</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#e87ba4"></div>llava:7b</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#94a3b8"></div>qwen2.5vl</div>
+    </div>
+    <div style="position:relative;height:300px;">
+      <canvas id="chart" role="img" aria-label="Grouped bar chart of model accuracy per project">Model accuracy per project.</canvas>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Full results — VLM vs ViT (tested on bad images only)</div>
+    <table>
+      <thead><tr>
+        <th style="width:16%">Model</th>
+        <th style="width:9%">Type</th>
+        <th style="width:30%">Project</th>
+        <th style="width:12%">Accuracy</th>
+        <th style="width:12%">Correct</th>
+        <th style="width:10%">Speed</th>
+        <th style="width:11%">TP/TN/FP/FN</th>
+      </tr></thead>
+      <tbody id="tbl"></tbody>
+    </table>
+  </div>
+</div>
+<script>
+const projects=['BSH Crack','Klinken Rack','Klinken Loaded','Klinken Empty'];
+new Chart(document.getElementById('chart'),{
+  type:'bar',
+  data:{labels:projects,datasets:[
+    {label:'DINOv2',data:[100,100,74,100],backgroundColor:'#2a78d6',borderRadius:4,barPercentage:.7},
+    {label:'minicpm-v',data:[88,100,100,100],backgroundColor:'#008300',borderRadius:4,barPercentage:.7},
+    {label:'llava:7b',data:[100,100,100,100],backgroundColor:'#e87ba4',borderRadius:4,barPercentage:.7},
+    {label:'qwen2.5vl',data:[0,0,0,0],backgroundColor:'#94a3b8',borderRadius:4,barPercentage:.7},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.raw}%`}}},
+    scales:{
+      x:{grid:{display:false},ticks:{font:{size:11},color:'#64748b'},border:{display:false}},
+      y:{min:0,max:100,ticks:{callback:v=>v+'%',stepSize:25,font:{size:11},color:'#64748b'},
+         grid:{color:'#f1f5f9'},border:{display:false}}
+    }
+  }
+});
+
+const rows=[
+  ['DINOv2','ViT','BSH Crack Detection',100,'16/16','50ms','8/8/0/0'],
+  ['DINOv2','ViT','Klinken Rack Position',100,'48/48','50ms','32/16/0/0'],
+  ['DINOv2','ViT','Klinken Loaded Rack',74,'29/39','50ms','15/14/2/8'],
+  ['DINOv2','ViT','Klinken Empty Rack',100,'18/18','50ms','9/9/0/0'],
+  ['minicpm-v','VLM','BSH Crack Detection',88,'7/8','~45s','7/-/-/-'],
+  ['minicpm-v','VLM','Klinken Rack Position',100,'32/32','~45s','32/-/-/-'],
+  ['minicpm-v','VLM','Klinken Loaded Rack',100,'23/23','~45s','23/-/-/-'],
+  ['minicpm-v','VLM','Klinken Empty Rack',100,'9/9','~45s','9/-/-/-'],
+  ['llava:7b','VLM','BSH Crack Detection',100,'8/8','~30s','8/-/-/-'],
+  ['llava:7b','VLM','Klinken Rack Position',100,'32/32','~30s','32/-/-/-'],
+  ['llava:7b','VLM','Klinken Loaded Rack',100,'23/23','~30s','23/-/-/-'],
+  ['llava:7b','VLM','Klinken Empty Rack',100,'9/9','~30s','9/-/-/-'],
+  ['qwen2.5vl','VLM','BSH Crack Detection',0,'0/8','~3min','0/-/-/-'],
+  ['qwen2.5vl','VLM','Klinken Rack Position',0,'0/32','~3min','0/-/-/-'],
+  ['qwen2.5vl','VLM','Klinken Loaded Rack',0,'0/23','~3min','0/-/-/-'],
+  ['qwen2.5vl','VLM','Klinken Empty Rack',0,'0/9','~3min','0/-/-/-'],
+];
+const tbody=document.getElementById('tbl');
+rows.forEach(([model,type,proj,acc,corr,speed,conf])=>{
+  const b=acc===100?'bg':acc>=74?'by':'br';
+  const tr=document.createElement('tr');
+  tr.innerHTML=`<td><strong>${model}</strong></td>
+    <td><span class="${type==='ViT'?'vit':'vlm'}">${type}</span></td>
+    <td>${proj}</td>
+    <td><span class="badge ${b}">${acc}%</span></td>
+    <td style="color:#64748b">${corr}</td>
+    <td style="color:#64748b">${speed}</td>
+    <td style="color:#94a3b8;font-size:11px">${conf}</td>`;
+  tbody.appendChild(tr);
+});
+</script>
+</body></html>

@@ -1,0 +1,38 @@
+{
+  "BSH_Crack_Detection": {
+    "project": "BSH_Crack_Detection",
+    "part_name": "BSH Crack Detection",
+    "model": "llava:7b",
+    "accuracy": 0,
+    "total_tested": 0,
+    "use_xml_context": true,
+    "prompt_strategy": "xml_annotation_guided"
+  },
+  "Klinken_Rack_Position": {
+    "project": "Klinken_Rack_Position",
+    "part_name": "Klinken Rack Position",
+    "model": "llava:7b",
+    "accuracy": 0.0,
+    "total_tested": 32,
+    "use_xml_context": true,
+    "prompt_strategy": "xml_annotation_guided"
+  },
+  "Klinken_Loaded_Rack": {
+    "project": "Klinken_Loaded_Rack",
+    "part_name": "Klinken Loaded Rack",
+    "model": "llava:7b",
+    "accuracy": 0.0,
+    "total_tested": 23,
+    "use_xml_context": true,
+    "prompt_strategy": "xml_annotation_guided"
+  },
+  "Klinken_Empty_Rack": {
+    "project": "Klinken_Empty_Rack",
+    "part_name": "Klinken Empty Rack",
+    "model": "llava:7b",
+    "accuracy": 0.0,
+    "total_tested": 9,
+    "use_xml_context": true,
+    "prompt_strategy": "xml_annotation_guided"
+  }
+}

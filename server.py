@@ -49,10 +49,13 @@ async def inspect(
     mime = file.content_type or "image/jpeg"
     if not mime.startswith("image/"):
         raise HTTPException(status_code=400, detail="Must be an image")
-    # Override model if specified
+    # Set model and FORCE_LLM flag before calling inspect
+    import inspector as insp
     if model and model != 'dinov2':
-        import inspector as insp
         insp.VISION_MODEL = model
+        insp.FORCE_LLM = True
+    else:
+        insp.FORCE_LLM = False
     # Build image_path so annotation_utils can find matching XML
     proj = inspect_image.__module__ and __import__('inspector').PROJECTS.get(project)
     img_path = None

@@ -1,0 +1,54 @@
+{
+  "llava:7b": {
+    "BSH_Crack_Detection": {
+      "correct": 0,
+      "total": 8,
+      "accuracy": 0,
+      "fp": 8
+    },
+    "Klinken_Rack_Position": {
+      "correct": 0,
+      "total": 16,
+      "accuracy": 0,
+      "fp": 16
+    },
+    "Klinken_Loaded_Rack": {
+      "correct": 0,
+      "total": 16,
+      "accuracy": 0,
+      "fp": 16
+    },
+    "Klinken_Empty_Rack": {
+      "correct": 0,
+      "total": 9,
+      "accuracy": 0,
+      "fp": 9
+    }
+  },
+  "minicpm-v": {
+    "BSH_Crack_Detection": {
+      "correct": 0,
+      "total": 8,
+      "accuracy": 0,
+      "fp": 8
+    },
+    "Klinken_Rack_Position": {
+      "correct": 1,
+      "total": 16,
+      "accuracy": 6,
+      "fp": 15
+    },
+    "Klinken_Loaded_Rack": {
+      "correct": 0,
+      "total": 16,
+      "accuracy": 0,
+      "fp": 16
+    },
+    "Klinken_Empty_Rack": {
+      "correct": 6,
+      "total": 9,
+      "accuracy": 67,
+      "fp": 3
+    }
+  }
+}

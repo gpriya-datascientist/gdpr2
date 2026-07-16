@@ -1,0 +1,44 @@
+{
+  "llava:7b_BSH_Crack_Detection": {
+    "project": "BSH_Crack_Detection",
+    "model": "llava:7b",
+    "correct": 8,
+    "total": 8,
+    "accuracy": 1.0
+  },
+  "llava:7b_Klinken_Loaded_Rack": {
+    "project": "Klinken_Loaded_Rack",
+    "model": "llava:7b",
+    "correct": 23,
+    "total": 23,
+    "accuracy": 1.0
+  },
+  "qwen2.5vl:7b_BSH_Crack_Detection": {
+    "project": "BSH_Crack_Detection",
+    "model": "qwen2.5vl:7b",
+    "correct": 0,
+    "total": 8,
+    "accuracy": 0.0
+  },
+  "qwen2.5vl:7b_Klinken_Loaded_Rack": {
+    "project": "Klinken_Loaded_Rack",
+    "model": "qwen2.5vl:7b",
+    "correct": 0,
+    "total": 23,
+    "accuracy": 0.0
+  },
+  "minicpm-v_BSH_Crack_Detection": {
+    "project": "BSH_Crack_Detection",
+    "model": "minicpm-v",
+    "correct": 7,
+    "total": 8,
+    "accuracy": 0.875
+  },
+  "minicpm-v_Klinken_Loaded_Rack": {
+    "project": "Klinken_Loaded_Rack",
+    "model": "minicpm-v",
+    "correct": 23,
+    "total": 23,
+    "accuracy": 1.0
+  }
+}

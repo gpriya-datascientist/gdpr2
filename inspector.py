@@ -81,6 +81,7 @@ PROJECTS = {
 # â”€â”€ DINOv2 models (trained on startup) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 _embedder = None
 _models: dict[str, dict] = {}
+FORCE_LLM = False  # When True, skip DINOv2 and use llava/qwen directly
 
 def reset_models():
     """Call this to force retrain all models."""
@@ -134,30 +135,31 @@ async def inspect_image(image_bytes: bytes, project_id: str = "bsh",
     proj = PROJECTS.get(project_id, PROJECTS["bsh"])
     start = time.perf_counter()
 
-    # â”€â”€ Primary: DINOv2 fast local classifier (~50ms) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    try:
-        model = await asyncio.to_thread(_get_model, project_id)
-        if model is not None:
-            from embedder import predict
-            from annotation_utils import load_annotations
-            verdict, conf, dinov2_boxes, reason = await asyncio.to_thread(
-                predict, model, _get_embedder(), image_bytes)
-            # Use XML annotation if image_path provided and XML exists
-            xml_boxes = load_annotations(image_path) if image_path else None
-            boxes = xml_boxes if xml_boxes else dinov2_boxes
-            box_src = "annotation" if xml_boxes else "dinov2"
-            latency = (time.perf_counter()-start)*1000
-            r = InspectionResult(verdict=verdict, confidence=conf, reason=reason,
-                defect_type="crack" if verdict=="ANOMALY" else None,
-                backend_used=f"dinov2+{box_src}", latency_ms=latency,
-                project=project_id, boxes=boxes)
-            r.control_suggestion = _get_suggestion(r, proj)
-            return r
-    except Exception as e:
-        log.warning("DINOv2 failed: %s", e)
+    # Use DINOv2 only when dropdown = dinov2 (default)
+    import inspector as _m
+    if not _m.FORCE_LLM:
+        try:
+            model = await asyncio.to_thread(_get_model, project_id)
+            if model is not None:
+                from embedder import predict
+                from annotation_utils import load_annotations
+                verdict, conf, dinov2_boxes, reason = await asyncio.to_thread(
+                    predict, model, _get_embedder(), image_bytes)
+                xml_boxes = load_annotations(image_path) if image_path else None
+                boxes = xml_boxes if xml_boxes else dinov2_boxes
+                box_src = "annotation" if xml_boxes else "dinov2"
+                latency = (time.perf_counter()-start)*1000
+                r = InspectionResult(verdict=verdict, confidence=conf, reason=reason,
+                    defect_type="crack" if verdict=="ANOMALY" else None,
+                    backend_used=f"dinov2+{box_src}", latency_ms=latency,
+                    project=project_id, boxes=boxes)
+                r.control_suggestion = _get_suggestion(r, proj)
+                return r
+        except Exception as e:
+            log.warning("DINOv2 failed: %s", e)
 
-    # â”€â”€ Fallback: llava via Ollama â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    r = await _try_local(image_bytes, proj, mime, image_path)
+    # llava/qwen — used when FORCE_LLM=True or DINOv2 fails
+    r = await _try_local(image_bytes, proj, mime, image_path=image_path)
     if r:
         r.project = project_id
         r.control_suggestion = _get_suggestion(r, proj)
@@ -166,13 +168,6 @@ async def inspect_image(image_bytes: bytes, project_id: str = "bsh",
     return InspectionResult(verdict="ERROR", confidence=0.0, project=project_id,
         reason="All backends failed.", defect_type=None,
         backend_used="none", latency_ms=(time.perf_counter()-start)*1000)
-
-
-PROMPT_TEMPLATE = """You are a strict visual quality inspector in an industrial press shop.
-Inspection object: {part_name}.
-{description_hint}
-Respond ONLY with valid JSON:
-{{"verdict": "ANOMALY" or "GOOD", "confidence": <0.0-1.0>, "reason": "<max 30 words>", "defect_type": "<crack or wrong_position or unknown or null>", "box": {{"x_min": 0.1, "y_min": 0.3, "x_max": 0.7, "y_max": 0.8}} or null}}"""
 
 
 async def _try_local(image_bytes, proj, mime, image_path=None):
@@ -199,14 +194,32 @@ async def _try_local(image_bytes, proj, mime, image_path=None):
             prompt = PROMPT_TEMPLATE.format(
                 part_name=proj["part_name"],
                 description_hint=proj["description_hint"])
-        payload = {"model": VISION_MODEL, "prompt": prompt,
-                   "images": [img_b64], "stream": False,
-                   "options": {"temperature": 0.0}}
-        async with httpx.AsyncClient(timeout=120) as client:
-            resp = await client.post(f"{OLLAMA_URL}/api/generate", json=payload)
-            resp.raise_for_status()
-            raw = resp.json().get("response","").strip()
-        return _parse(raw, VISION_MODEL, (time.perf_counter()-start)*1000)
+        # qwen2.5vl needs OpenAI-compatible endpoint
+        if "qwen" in VISION_MODEL.lower():
+            payload = {"model": VISION_MODEL, "messages": [{"role":"user","content":[
+                {"type":"image_url","image_url":{"url":f"data:{mime};base64,{img_b64}"}},
+                {"type":"text","text":prompt}]}],
+                "stream": False, "temperature": 0.0}
+            async with httpx.AsyncClient(timeout=300) as client:
+                resp = await client.post(f"{OLLAMA_URL}/v1/chat/completions", json=payload)
+                resp.raise_for_status()
+                raw = resp.json()["choices"][0]["message"]["content"].strip()
+        else:
+            payload = {"model": VISION_MODEL, "prompt": prompt,
+                       "images": [img_b64], "stream": False,
+                       "options": {"temperature": 0.0}}
+            async with httpx.AsyncClient(timeout=120) as client:
+                resp = await client.post(f"{OLLAMA_URL}/api/generate", json=payload)
+                resp.raise_for_status()
+                raw = resp.json().get("response","").strip()
+        result = _parse(raw, VISION_MODEL, (time.perf_counter()-start)*1000)
+        # Always attach XML boxes if available
+        if result and result.verdict == "ANOMALY" and image_path:
+            from annotation_utils import load_annotations
+            xml_boxes = load_annotations(image_path)
+            if xml_boxes:
+                result.boxes = xml_boxes
+        return result
     except Exception as e:
         log.warning("llava failed: %s", e)
         return None

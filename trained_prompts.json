@@ -1,0 +1,1753 @@
+{
+  "llava:7b": {
+    "Klinken_Rack_Position": {
+      "project": "Klinken_Rack_Position",
+      "model": "llava:7b",
+      "tested": 32,
+      "correct": 32,
+      "accuracy": 1.0,
+      "results": [
+        {
+          "file": "Klappenstellung_1_3a88aff80a2a.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower in the image.",
+          "elapsed_ms": 18258,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower in the image.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 6\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_5c48806e9fed.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower in the image.",
+          "elapsed_ms": 31375,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower in the image.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 6\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_62e7c868222d.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower in the image.",
+          "elapsed_ms": 31972,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower in the image.\",\n  \"defect_type\": \"wrong_pos\",\n  \"confirmed\": 6\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_66cdb68845c6.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower in the image.",
+          "elapsed_ms": 31422,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower in the image.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 3\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_76fabed303f4.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are three clamps extended per tower, which is more than the maximum allowed of one clamp extended.",
+          "elapsed_ms": 33943,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are three clamps extended per tower, which is more than the maximum allowed of one clamp extended.\",\n  \"defect_type\": \"wrong_p",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_9dc9f2fff684.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are three clamps extended per tower, which is more than the maximum allowed of one clamp extended.",
+          "elapsed_ms": 33271,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are three clamps extended per tower, which is more than the maximum allowed of one clamp extended.\",\n  \"defect_type\": \"wrong_p",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_c0d81a7f0836.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower, which is not in accordance with the specified condition of having a maximum of one clamp extended.",
+          "elapsed_ms": 35548,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower, which is not in accordance with the specified condition of having a maximum of one cla",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_115E_54b0477703f0.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower in the image.",
+          "elapsed_ms": 33084,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower in the image.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 4\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_115E_8b375a3885ec.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All four regions show clamps extended per tower, which is a defect according to the criteria provided.",
+          "elapsed_ms": 34418,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All four regions show clamps extended per tower, which is a defect according to the criteria provided.\",\n  \"defect_type\": \"wrong_pos",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_115E_e85ca2af8884.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower in the image.",
+          "elapsed_ms": 33158,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower in the image.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 4\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_115E_f1bc86f95628.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower in the image.",
+          "elapsed_ms": 32702,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower in the image.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 4\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_50E_03a6617a2e08.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower in the image.",
+          "elapsed_ms": 33532,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower in the image.\",\n  \"defect_type\": \"wrong_pos\",\n  \"confirmed\": 4\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_50E_56879061f46b.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All four annotated regions show clamps extended per tower, which is a defect.",
+          "elapsed_ms": 56129,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All four annotated regions show clamps extended per tower, which is a defect.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 4\n",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_50E_5c9d3b4a91f6.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All four regions show clamps extended per tower, which is not in accordance with the specified condition of having a maximum of one clamp extended.",
+          "elapsed_ms": 35232,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All four regions show clamps extended per tower, which is not in accordance with the specified condition of having a maximum of one ",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_50E_711c535b0f81.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All four annotated regions show clamps extended per tower, which is a defect.",
+          "elapsed_ms": 35851,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All four annotated regions show clamps extended per tower, which is a defect.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 4\n",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_483b0a0031d3.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All four clamps are extended per tower, which is not the intended design for a Press Clamp Transport Rack.",
+          "elapsed_ms": 36394,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All four clamps are extended per tower, which is not the intended design for a Press Clamp Transport Rack.\",\n  \"defect_type\": \"wrong",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_582e1aa79aa4.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower, which is not in accordance with the specified condition of having a maximum of one clamp extended.",
+          "elapsed_ms": 37915,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower, which is not in accordance with the specified condition of having a maximum of one cla",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_7512e0e2c71b.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower, which is not allowed in the given context.",
+          "elapsed_ms": 35865,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower, which is not allowed in the given context.\",\n  \"defect_type\": \"wrong_position\",\n  \"con",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_8415cae3debd.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower, which is not allowed in the given context.",
+          "elapsed_ms": 34782,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower, which is not allowed in the given context.\",\n  \"defect_type\": \"wrong_position\",\n  \"con",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_8706f8f2bc3a.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All six clamps are extended per tower, which is not the intended design for a Press Clamp Transport Rack.",
+          "elapsed_ms": 34537,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All six clamps are extended per tower, which is not the intended design for a Press Clamp Transport Rack.\",\n  \"defect_type\": \"wrong_",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_a2e855a394d1.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower, which is not allowed in the given context.",
+          "elapsed_ms": 33893,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower, which is not allowed in the given context.\",\n  \"defect_type\": \"wrong_position\",\n  \"con",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_ad564176765a.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All six clamps are extended per tower, which is not the intended design for a Press Clamp Transport Rack.",
+          "elapsed_ms": 35214,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All six clamps are extended per tower, which is not the intended design for a Press Clamp Transport Rack.\",\n  \"defect_type\": \"wrong_",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_cc4142f950d2.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All regions annotated with 'wrong_pos' show clamps extended per tower, which is not in accordance with the specified condition of having a maximum of one clamp extended per tower.",
+          "elapsed_ms": 37747,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All regions annotated with 'wrong_pos' show clamps extended per tower, which is not in accordance with the specified condition of ha",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_0c060c835b90.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower, which is not allowed in the given context.",
+          "elapsed_ms": 34769,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower, which is not allowed in the given context.\",\n  \"defect_type\": \"wrong_position\",\n  \"con",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_0e04eaa8be08.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower, which is not allowed in the given context.",
+          "elapsed_ms": 12244,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower, which is not allowed in the given context.\",\n  \"defect_type\": \"wrong_position\",\n  \"con",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_2977e9df1e90.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All clamps are extended per tower, which is not the desired state.",
+          "elapsed_ms": 11837,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All clamps are extended per tower, which is not the desired state.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 7\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_58b6cfbf4412.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower, which is not allowed in the given context.",
+          "elapsed_ms": 12284,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower, which is not allowed in the given context.\",\n  \"defect_type\": \"wrong_position\",\n  \"con",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_810e7ef4daeb.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All clamps are extended per tower, which is not the desired state.",
+          "elapsed_ms": 12087,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All clamps are extended per tower, which is not the desired state.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 8\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_8cf7dca629ca.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower, which is not allowed in the given context.",
+          "elapsed_ms": 12558,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower, which is not allowed in the given context.\",\n  \"defect_type\": \"wrong_position\",\n  \"con",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_96ad3bf46808.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower, which is not allowed in the given context.",
+          "elapsed_ms": 13158,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower, which is not allowed in the given context.\",\n  \"defect_type\": \"wrong_position\",\n  \"con",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_c5359b9df971.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower, which is not allowed in the given context.",
+          "elapsed_ms": 13290,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower, which is not allowed in the given context.\",\n  \"defect_type\": \"wrong_position\",\n  \"con",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_e7b6b2c5a3c1.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended per tower, which is not allowed in the given context.",
+          "elapsed_ms": 13528,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended per tower, which is not allowed in the given context.\",\n  \"defect_type\": \"wrong_position\",\n  \"con",
+          "correct": true
+        }
+      ]
+    },
+    "Klinken_Loaded_Rack": {
+      "project": "Klinken_Loaded_Rack",
+      "model": "llava:7b",
+      "tested": 23,
+      "correct": 11,
+      "accuracy": 0.478,
+      "results": [
+        {
+          "file": "Klappenstellung_1_3a88aff80a2a.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended on the loaded rack in regions 1, 2, 3, and 4.",
+          "elapsed_ms": 16509,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended on the loaded rack in regions 1, 2, 3, and 4.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\":",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_5c48806e9fed.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended on the loaded rack in regions 1, 2, 3, and 4.",
+          "elapsed_ms": 16681,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended on the loaded rack in regions 1, 2, 3, and 4.\",\n  \"defect_type\": \"wrong_pos\",\n  \"confirmed\": 6\n}\n",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_62e7c868222d.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are multiple clamps extended on the loaded rack in regions 1, 2, 3, and 5.",
+          "elapsed_ms": 16578,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are multiple clamps extended on the loaded rack in regions 1, 2, 3, and 5.\",\n  \"defect_type\": \"wrong_pos\",\n  \"confirmed\": 6\n}\n",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_66cdb68845c6.jpg",
+          "verdict": "GOOD",
+          "confidence": 1.0,
+          "reason": "All regions appear to be in the correct position and orientation for a press clamp transport rack.",
+          "elapsed_ms": 14331,
+          "raw": "```json\n{\n  \"verdict\": \"GOOD\",\n  \"confidence\": 1.0,\n  \"reason\": \"All regions appear to be in the correct position and orientation for a press clamp transport rack.\",\n  \"defect_type\": \"wrong_position\",",
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_76fabed303f4.jpg",
+          "verdict": "GOOD",
+          "confidence": 1.0,
+          "reason": "All clamps are in the correct position and there is no visible damage or deformation.",
+          "elapsed_ms": 14003,
+          "raw": "```json\n{\n  \"verdict\": \"GOOD\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are in the correct position and there is no visible damage or deformation.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed",
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_9dc9f2fff684.jpg",
+          "verdict": "GOOD",
+          "confidence": 1.0,
+          "reason": "All clamps are in the correct position and there is no visible damage or deformation.",
+          "elapsed_ms": 14011,
+          "raw": "```json\n{\n  \"verdict\": \"GOOD\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are in the correct position and there is no visible damage or deformation.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed",
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_c0d81a7f0836.jpg",
+          "verdict": "GOOD",
+          "confidence": 1.0,
+          "reason": "All regions appear to be in the correct position and orientation for a press clamp transport rack.",
+          "elapsed_ms": 14183,
+          "raw": "```json\n{\n  \"verdict\": \"GOOD\",\n  \"confidence\": 1.0,\n  \"reason\": \"All regions appear to be in the correct position and orientation for a press clamp transport rack.\",\n  \"defect_type\": \"wrong_position\",",
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_115E_54b0477703f0.jpg",
+          "verdict": "GOOD",
+          "confidence": 1.0,
+          "reason": "All clamps are in the correct position and there is no visible damage or deformation.",
+          "elapsed_ms": 14171,
+          "raw": "```json\n{\n  \"verdict\": \"GOOD\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are in the correct position and there is no visible damage or deformation.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed",
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_115E_8b375a3885ec.jpg",
+          "verdict": "GOOD",
+          "confidence": 1.0,
+          "reason": "All clamps are in the correct position and there is no visible damage or deformation.",
+          "elapsed_ms": 14150,
+          "raw": "```json\n{\n  \"verdict\": \"GOOD\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are in the correct position and there is no visible damage or deformation.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed",
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_115E_e85ca2af8884.jpg",
+          "verdict": "GOOD",
+          "confidence": 1.0,
+          "reason": "All clamps are in the correct position and there is no visible damage or deformation.",
+          "elapsed_ms": 14073,
+          "raw": "```json\n{\n  \"verdict\": \"GOOD\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are in the correct position and there is no visible damage or deformation.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed",
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_115E_f1bc86f95628.jpg",
+          "verdict": "GOOD",
+          "confidence": 1.0,
+          "reason": "All clamps are in the correct position and there is no visible damage or deformation.",
+          "elapsed_ms": 13980,
+          "raw": "```json\n{\n  \"verdict\": \"GOOD\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are in the correct position and there is no visible damage or deformation.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed",
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_50E_03a6617a2e08.jpg",
+          "verdict": "GOOD",
+          "confidence": 1.0,
+          "reason": "All clamps are in the correct position and there is no visible damage or deformation.",
+          "elapsed_ms": 13986,
+          "raw": "```json\n{\n  \"verdict\": \"GOOD\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are in the correct position and there is no visible damage or deformation.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed",
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_50E_56879061f46b.jpg",
+          "verdict": "GOOD",
+          "confidence": 1.0,
+          "reason": "All clamps are in the correct position and there is no visible damage or deformation.",
+          "elapsed_ms": 14026,
+          "raw": "```json\n{\n  \"verdict\": \"GOOD\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are in the correct position and there is no visible damage or deformation.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed",
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_50E_5c9d3b4a91f6.jpg",
+          "verdict": "GOOD",
+          "confidence": 1.0,
+          "reason": "All clamps are in the correct position and there is no visible damage or deformation.",
+          "elapsed_ms": 14112,
+          "raw": "```json\n{\n  \"verdict\": \"GOOD\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are in the correct position and there is no visible damage or deformation.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed",
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_50E_711c535b0f81.jpg",
+          "verdict": "GOOD",
+          "confidence": 1.0,
+          "reason": "All clamps are in the correct position and there is no visible damage or deformation.",
+          "elapsed_ms": 14234,
+          "raw": "```json\n{\n  \"verdict\": \"GOOD\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are in the correct position and there is no visible damage or deformation.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed",
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_483b0a0031d3.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are four clamps extended on the loaded rack, which is not in accordance with the KS3/KS4 standard for a Press Clamp Transport Rack.",
+          "elapsed_ms": 16967,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are four clamps extended on the loaded rack, which is not in accordance with the KS3/KS4 standard for a Press Clamp Transport ",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_582e1aa79aa4.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "Region 1 (wrong_pos): x=15-26%, y=11-68% - The clamp is extended beyond the rack's structure, which is not typical for a press clamp transport rack.",
+          "elapsed_ms": 20087,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"Region 1 (wrong_pos): x=15-26%, y=11-68% - The clamp is extended beyond the rack's structure, which is not typical for a press clamp",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_7512e0e2c71b.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "Region 1 (wrong_pos): x=15-25%, y=10-68% - The clamp is extended beyond the rack's frame.",
+          "elapsed_ms": 18537,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"Region 1 (wrong_pos): x=15-25%, y=10-68% - The clamp is extended beyond the rack's frame.\",\n  \"defect_type\": \"wrong_position\",\n  \"co",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_8415cae3debd.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are too many clamps extended on the loaded rack.",
+          "elapsed_ms": 14174,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are too many clamps extended on the loaded rack.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 7\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_8706f8f2bc3a.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are too many clamps extended on the loaded rack.",
+          "elapsed_ms": 14364,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are too many clamps extended on the loaded rack.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 6\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_a2e855a394d1.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "Region 1 (wrong_pos): x=11-19%, y=82-99% - The clamp is extended beyond the rack's structure, which is not typical for a press clamp transport rack.",
+          "elapsed_ms": 20904,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"Region 1 (wrong_pos): x=11-19%, y=82-99% - The clamp is extended beyond the rack's structure, which is not typical for a press clamp",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_ad564176765a.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are too many clamps extended on the loaded rack.",
+          "elapsed_ms": 14196,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are too many clamps extended on the loaded rack.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 6\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_cc4142f950d2.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "There are too many clamps extended on the loaded rack.",
+          "elapsed_ms": 14303,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"There are too many clamps extended on the loaded rack.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 6\n}\n```",
+          "correct": true
+        }
+      ]
+    },
+    "Klinken_Empty_Rack": {
+      "project": "Klinken_Empty_Rack",
+      "model": "llava:7b",
+      "tested": 9,
+      "correct": 9,
+      "accuracy": 1.0,
+      "results": [
+        {
+          "file": "Klappenstellung_6_0c060c835b90.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All clamps are extended on the empty rack.",
+          "elapsed_ms": 14298,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All clamps are extended on the empty rack.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 8\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_0e04eaa8be08.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 1.0,
+          "reason": "All clamps are extended on the empty rack.",
+          "elapsed_ms": 14546,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are extended on the empty rack.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 7\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_2977e9df1e90.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 1.0,
+          "reason": "All clamps are extended on the empty rack.",
+          "elapsed_ms": 15012,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are extended on the empty rack.\",\n  \"defect_type\": \"wrong_pos\",\n  \"confirmed\": 7\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_58b6cfbf4412.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All clamps are extended on the empty rack.",
+          "elapsed_ms": 14684,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All clamps are extended on the empty rack.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 8\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_810e7ef4daeb.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All clamps are extended on the empty rack.",
+          "elapsed_ms": 14592,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All clamps are extended on the empty rack.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 8\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_8cf7dca629ca.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 1.0,
+          "reason": "All clamps are extended on the empty rack.",
+          "elapsed_ms": 14413,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are extended on the empty rack.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 7\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_96ad3bf46808.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All clamps are extended on the empty rack.",
+          "elapsed_ms": 15368,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All clamps are extended on the empty rack.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 8\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_c5359b9df971.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 1.0,
+          "reason": "All clamps are extended on the empty rack.",
+          "elapsed_ms": 14497,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 1.0,\n  \"reason\": \"All clamps are extended on the empty rack.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 7\n}\n```",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_e7b6b2c5a3c1.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.9,
+          "reason": "All clamps are extended on the empty rack.",
+          "elapsed_ms": 14611,
+          "raw": "```json\n{\n  \"verdict\": \"ANOMALY\",\n  \"confidence\": 0.9,\n  \"reason\": \"All clamps are extended on the empty rack.\",\n  \"defect_type\": \"wrong_position\",\n  \"confirmed\": 8\n}\n```",
+          "correct": true
+        }
+      ]
+    }
+  },
+  "qwen2.5vl:7b": {
+    "Klinken_Rack_Position": {
+      "project": "Klinken_Rack_Position",
+      "model": "qwen2.5vl:7b",
+      "tested": 32,
+      "correct": 0,
+      "accuracy": 0.0,
+      "results": [
+        {
+          "file": "Klappenstellung_1_3a88aff80a2a.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 18609,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_5c48806e9fed.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 645,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_62e7c868222d.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 649,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_66cdb68845c6.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 661,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_76fabed303f4.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 660,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_9dc9f2fff684.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 679,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_c0d81a7f0836.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 656,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_115E_54b0477703f0.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 657,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_115E_8b375a3885ec.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 652,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_115E_e85ca2af8884.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 664,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_115E_f1bc86f95628.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 657,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_50E_03a6617a2e08.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 664,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_50E_56879061f46b.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 654,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_50E_5c9d3b4a91f6.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 666,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_50E_711c535b0f81.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 652,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_483b0a0031d3.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 695,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_582e1aa79aa4.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 685,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_7512e0e2c71b.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 667,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_8415cae3debd.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 673,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_8706f8f2bc3a.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 655,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_a2e855a394d1.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 675,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_ad564176765a.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 660,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_cc4142f950d2.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 699,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_0c060c835b90.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 689,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_0e04eaa8be08.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 675,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_2977e9df1e90.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 658,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_58b6cfbf4412.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 711,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_810e7ef4daeb.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 673,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_8cf7dca629ca.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 662,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_96ad3bf46808.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 653,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_c5359b9df971.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 653,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_e7b6b2c5a3c1.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 679,
+          "correct": false
+        }
+      ]
+    },
+    "Klinken_Loaded_Rack": {
+      "project": "Klinken_Loaded_Rack",
+      "model": "qwen2.5vl:7b",
+      "tested": 23,
+      "correct": 0,
+      "accuracy": 0.0,
+      "results": [
+        {
+          "file": "Klappenstellung_1_3a88aff80a2a.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 655,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_5c48806e9fed.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 650,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_62e7c868222d.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 669,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_66cdb68845c6.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 684,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_76fabed303f4.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 675,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_9dc9f2fff684.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 663,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_1_c0d81a7f0836.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 653,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_115E_54b0477703f0.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 644,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_115E_8b375a3885ec.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 639,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_115E_e85ca2af8884.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 655,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_115E_f1bc86f95628.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 650,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_50E_03a6617a2e08.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 654,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_50E_56879061f46b.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 660,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_50E_5c9d3b4a91f6.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 677,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_2_50E_711c535b0f81.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 662,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_483b0a0031d3.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 716,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_582e1aa79aa4.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 702,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_7512e0e2c71b.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 696,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_8415cae3debd.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 695,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_8706f8f2bc3a.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 664,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_a2e855a394d1.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 686,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_ad564176765a.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 650,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_5_cc4142f950d2.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 667,
+          "correct": false
+        }
+      ]
+    },
+    "Klinken_Empty_Rack": {
+      "project": "Klinken_Empty_Rack",
+      "model": "qwen2.5vl:7b",
+      "tested": 9,
+      "correct": 0,
+      "accuracy": 0.0,
+      "results": [
+        {
+          "file": "Klappenstellung_6_0c060c835b90.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 681,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_0e04eaa8be08.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 670,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_2977e9df1e90.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 660,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_58b6cfbf4412.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 649,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_810e7ef4daeb.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 655,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_8cf7dca629ca.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 652,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_96ad3bf46808.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 645,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_c5359b9df971.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 651,
+          "correct": false
+        },
+        {
+          "file": "Klappenstellung_6_e7b6b2c5a3c1.jpg",
+          "verdict": "GOOD",
+          "confidence": 0.5,
+          "reason": "no defect",
+          "elapsed_ms": 668,
+          "correct": false
+        }
+      ]
+    }
+  },
+  "minicpm-v": {
+    "Klinken_Rack_Position": {
+      "project": "Klinken_Rack_Position",
+      "model": "minicpm-v",
+      "tested": 32,
+      "correct": 32,
+      "accuracy": 1.0,
+      "results": [
+        {
+          "file": "Klappenstellung_1_3a88aff80a2a.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower detected in various regions of the rack.",
+          "elapsed_ms": 138293,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower detected in var",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_5c48806e9fed.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions in various regions of the rack.",
+          "elapsed_ms": 146268,
+          "raw": "Based on the provided image and annotations for defect locations, here is my analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their designated posit",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_62e7c868222d.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended in various regions indicating potential issues with mechanism or alignment.",
+          "elapsed_ms": 80119,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended in various regions indica",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_66cdb68845c6.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower detected in regions with wrong position (1-24%, 6-15%, 83-94% and y=50-71%).",
+          "elapsed_ms": 55521,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower detected in r",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_76fabed303f4.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended in both towers which indicates a potential issue with the mechanism or alignment.",
+          "elapsed_ms": 67472,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended in both towers which in",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_9dc9f2fff684.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended in both towers which indicates a potential issue with the mechanism.",
+          "elapsed_ms": 62534,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended in both towers which in",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_c0d81a7f0836.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower detected in regions with wrong position.",
+          "elapsed_ms": 70740,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower detected in r",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_115E_54b0477703f0.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended in various regions indicating a potential issue with the rack's operation or structure.",
+          "elapsed_ms": 81384,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended in various regions indi",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_115E_8b375a3885ec.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower detected in various regions of the rack.",
+          "elapsed_ms": 69761,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower detected in v",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_115E_e85ca2af8884.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended in various regions indicating a potential issue with the rack's operation or design.",
+          "elapsed_ms": 80679,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended in various regions indi",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_115E_f1bc86f95628.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended in various regions of the rack which indicates a potential issue with their operation or positioning.",
+          "elapsed_ms": 57265,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended in various regions of t",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_50E_03a6617a2e08.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower detected in various regions.",
+          "elapsed_ms": 71524,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower detected in v",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_50E_56879061f46b.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower detected in various regions of the rack.",
+          "elapsed_ms": 71648,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower detected in v",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_50E_5c9d3b4a91f6.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower detected in regions with wrong positions.",
+          "elapsed_ms": 75396,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower detected in r",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_50E_711c535b0f81.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower detected in various regions.",
+          "elapsed_ms": 72976,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower detected in v",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_483b0a0031d3.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.98,
+          "reason": "Multiple clamps extended per tower in various regions indicating a potential issue with clamp operation or positioning.",
+          "elapsed_ms": 78050,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.98, \"reason\": \"Multiple clamps extended per tower in various re",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_582e1aa79aa4.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower detected in regions with wrong position (1-26%, 81-89%, 11-19%, and 78-86%). This exceeds the maximum limit of one clamp allowed to be extended.",
+          "elapsed_ms": 58837,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower detected in r",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_7512e0e2c71b.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower in various regions indicating potential structural issues or improper assembly.",
+          "elapsed_ms": 64381,
+          "raw": "Based on the provided image and expert annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower in vario",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_8415cae3debd.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower in various regions indicating a potential issue with the press clamp transport rack.",
+          "elapsed_ms": 84853,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower in various re",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_8706f8f2bc3a.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower detected in various regions.",
+          "elapsed_ms": 80037,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower detected in var",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_a2e855a394d1.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.98,
+          "reason": "Multiple clamps extended per tower detected in various regions.",
+          "elapsed_ms": 75710,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.98, \"reason\": \"Multiple clamps extended per tower detected in v",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_ad564176765a.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower detected in various regions.",
+          "elapsed_ms": 77556,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower detected in v",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_cc4142f950d2.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower detected in various regions.",
+          "elapsed_ms": 81599,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower detected in v",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_0c060c835b90.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower in various regions indicating potential structural issues or improper assembly.",
+          "elapsed_ms": 63324,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower in various regi",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_0e04eaa8be08.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower in various regions indicating a potential issue with the press clamp transport rack.",
+          "elapsed_ms": 90556,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower in various re",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_2977e9df1e90.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower in various regions indicating a potential issue with the press clamp transport rack.",
+          "elapsed_ms": 66980,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower in various re",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_58b6cfbf4412.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower in various regions indicating potential structural issues or improper assembly.",
+          "elapsed_ms": 64072,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower in various regi",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_810e7ef4daeb.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower in various regions indicating potential structural issues or improper usage.",
+          "elapsed_ms": 63137,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower in various regi",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_8cf7dca629ca.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower in various regions indicating a potential issue with the press clamp transport rack.",
+          "elapsed_ms": 94290,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower in various re",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_96ad3bf46808.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower in various regions indicating potential structural issues.",
+          "elapsed_ms": 88542,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower in various regi",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_c5359b9df971.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower in various regions of the rack.",
+          "elapsed_ms": 82784,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower in various regi",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_e7b6b2c5a3c1.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps extended per tower in various regions indicating potential structural issues.",
+          "elapsed_ms": 64239,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps extended per tower in various regi",
+          "correct": true
+        }
+      ]
+    },
+    "Klinken_Loaded_Rack": {
+      "project": "Klinken_Loaded_Rack",
+      "model": "minicpm-v",
+      "tested": 23,
+      "correct": 23,
+      "accuracy": 1.0,
+      "results": [
+        {
+          "file": "Klappenstellung_1_3a88aff80a2a.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates a potential issue with the rack's operation or design.",
+          "elapsed_ms": 64019,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their design",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_5c48806e9fed.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates a potential issue with the rack's operation or design.",
+          "elapsed_ms": 25918,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their design",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_62e7c868222d.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates an anomaly in the Press Clamp Transport Rack.",
+          "elapsed_ms": 31120,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their designat",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_66cdb68845c6.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates a potential issue with the rack's functionality or alignment.",
+          "elapsed_ms": 30044,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their design",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_76fabed303f4.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Three clamps are extended beyond their designated positions which indicates a potential issue with the rack's alignment or functionality.",
+          "elapsed_ms": 31463,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Three clamps are extended beyond their designate",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_9dc9f2fff684.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Three clamps are extended beyond their designated positions which indicates a potential issue with the rack's alignment or functionality.",
+          "elapsed_ms": 31469,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Three clamps are extended beyond their designate",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_1_c0d81a7f0836.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates a potential issue with the rack's functionality or assembly.",
+          "elapsed_ms": 29885,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their design",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_115E_54b0477703f0.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates a potential issue with the rack's alignment or operation.",
+          "elapsed_ms": 25148,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their design",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_115E_8b375a3885ec.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates a potential issue with the rack's alignment or operation.",
+          "elapsed_ms": 27117,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their design",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_115E_e85ca2af8884.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates a potential issue with the rack's operation or design.",
+          "elapsed_ms": 26561,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their design",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_115E_f1bc86f95628.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates an anomaly in the Press Clamp Transport Rack.",
+          "elapsed_ms": 40312,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their designat",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_50E_03a6617a2e08.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates a potential issue with the rack's operation or design.",
+          "elapsed_ms": 24110,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their design",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_50E_56879061f46b.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates a potential issue with the rack's operation or design.",
+          "elapsed_ms": 25474,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their design",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_50E_5c9d3b4a91f6.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates a potential issue with the rack's alignment or functionality.",
+          "elapsed_ms": 27227,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their design",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_2_50E_711c535b0f81.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates a potential issue with the rack's alignment or operation.",
+          "elapsed_ms": 24755,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their design",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_483b0a0031d3.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.98,
+          "reason": "Five regions marked with 'wrong_pos' indicate clamps are extended inappropriately.",
+          "elapsed_ms": 24236,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.98, \"reason\": \"Five regions marked with 'wrong_pos' indicate cl",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_582e1aa79aa4.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates a potential issue with the rack's operation or design.",
+          "elapsed_ms": 25364,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their design",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_7512e0e2c71b.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which could lead to misalignment or damage.",
+          "elapsed_ms": 31955,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their designat",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_8415cae3debd.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates a potential issue with the rack's alignment or operation.",
+          "elapsed_ms": 23578,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their design",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_8706f8f2bc3a.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates an anomaly in the rack's operation.",
+          "elapsed_ms": 49816,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their designat",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_a2e855a394d1.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.98,
+          "reason": "Five regions marked with 'wrong_pos' indicate clamps are extended inappropriately.",
+          "elapsed_ms": 24379,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.98, \"reason\": \"Five regions marked with 'wrong_pos' indicate cl",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_ad564176765a.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates an anomaly in the rack's operation.",
+          "elapsed_ms": 20934,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their designat",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_5_cc4142f950d2.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended beyond their designated positions which indicates an anomaly in the rack's operation.",
+          "elapsed_ms": 50961,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended beyond their designat",
+          "correct": true
+        }
+      ]
+    },
+    "Klinken_Empty_Rack": {
+      "project": "Klinken_Empty_Rack",
+      "model": "minicpm-v",
+      "tested": 9,
+      "correct": 9,
+      "accuracy": 1.0,
+      "results": [
+        {
+          "file": "Klappenstellung_6_0c060c835b90.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended in various regions which indicates an anomaly.",
+          "elapsed_ms": 48388,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended in various regions wh",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_0e04eaa8be08.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended in various regions which indicates a potential issue with their positioning or operation.",
+          "elapsed_ms": 44192,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended in various regions ",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_2977e9df1e90.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended in various regions of the rack which indicates a potential issue with their mechanism or positioning.",
+          "elapsed_ms": 39978,
+          "raw": "Based on the provided image and annotations for defect locations, here is the detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended in various regions ",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_58b6cfbf4412.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended in various regions which indicates an anomaly.",
+          "elapsed_ms": 44959,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended in various regions wh",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_810e7ef4daeb.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended in various regions of the rack which indicates an anomaly.",
+          "elapsed_ms": 41807,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended in various regions of",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_8cf7dca629ca.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended in various regions of the rack which indicates an anomaly.",
+          "elapsed_ms": 39032,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended in various regions of",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_96ad3bf46808.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended in various regions which indicates an anomaly.",
+          "elapsed_ms": 44027,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended in various regions wh",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_c5359b9df971.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended in various regions of the rack which indicates an anomaly.",
+          "elapsed_ms": 31155,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended in various regions of",
+          "correct": true
+        },
+        {
+          "file": "Klappenstellung_6_e7b6b2c5a3c1.jpg",
+          "verdict": "ANOMALY",
+          "confidence": 0.95,
+          "reason": "Multiple clamps are extended in various regions which indicates an anomaly.",
+          "elapsed_ms": 38332,
+          "raw": "Based on the provided image and annotations for defect locations, here is a detailed analysis:\n\n{\"verdict\": \"ANOMALY\", \"confidence\": 0.95, \"reason\": \"Multiple clamps are extended in various regions wh",
+          "correct": true
+        }
+      ]
+    }
+  }
+}

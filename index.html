@@ -73,7 +73,7 @@ header{background:#1e3a5f;color:white;padding:16px 32px;display:flex;align-items
 <body>
 <header>
   <div class="logo">Press<span>Vision</span>2</div>
-  <div class="health"><div class="dot" id="dot"></div><span id="hlabel">checking...</span><span style="opacity:0.4;margin-left:8px;">Qwen2.5-VL</span></div>
+  <div class="health"><div class="dot" id="dot"></div><span id="hlabel">checking...</span><a href="comparison.html" style="margin-left:16px;font-size:12px;color:#93c5fd;text-decoration:none;">📊 Model Comparison</a></div>
 </header>
 <div class="main">
   <div class="sidebar">
@@ -95,10 +95,7 @@ header{background:#1e3a5f;color:white;padding:16px 32px;display:flex;align-items
         <span class="proj-name">&#9881; Klinken Empty Rack</span>
         <span class="proj-desc">Upload KS6 bad — KS4 good (empty rack only)</span>
       </button>
-      <button class="project-btn" onclick="setProject('casting')" id="btn-casting">
-        <span class="proj-name">&#128295; Casting Defect Detection</span>
-        <span class="proj-desc">Upload from: Casting_Defect_Detection/bad or good</span>
-      </button>
+
     </div>
     <div class="card" id="stats-card">
       <h3>Dataset Stats</h3>
@@ -108,9 +105,9 @@ header{background:#1e3a5f;color:white;padding:16px 32px;display:flex;align-items
       <h3>Vision Model</h3>
       <select id="model-sel" style="width:100%;padding:8px;border-radius:6px;border:1px solid #e2e8f0;font-size:12px;" onchange="setModel(this.value)">
         <option value="dinov2" selected>⚡ DINOv2 (default ~50ms)</option>
+        <option value="minicpm-v">🔬 minicpm-v (100% accuracy, ~45s) ⭐ Best</option>
         <option value="llava:7b">🦙 llava:7b (~30s)</option>
-        <option value="qwen2.5vl:7b">🔮 qwen2.5vl:7b (~3min first)</option>
-        <option value="minicpm-v">🔬 minicpm-v (~45s, industrial)</option>
+        <option value="qwen2.5vl:7b">🔮 qwen2.5vl:7b (needs fix)</option>
       </select>
       <div style="font-size:11px;color:#94a3b8;margin-top:6px;" id="model-note">DINOv2 — trained on your dataset, fastest &amp; most accurate</div>
     </div>
