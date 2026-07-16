@@ -19,16 +19,30 @@ Fast industrial defect detection using **DINOv2 ViT-S/14** + **VLM models** (lla
 | Klinken_Loaded_Rack | 16 | 23 | Loaded rack clamp position (KS1/2/5) |
 | Klinken_Empty_Rack | 9 | 9 | Empty rack clamp position (KS4/6) |
 
-## Model Accuracy (tested on bad images with XML annotations)
+## Model Accuracy — Bad Images (ANOMALY detection, tested with XML annotations)
 
 | Model | Type | BSH | Klinken Rack | Klinken Loaded | Klinken Empty | Speed |
 |---|---|---|---|---|---|---|
-| **DINOv2** | ViT | 100% | 100% | 74% | 100% | 50ms |
-| **minicpm-v** | VLM | 88% | 100% | 100% | 100% | ~45s |
-| **llava:7b** | VLM | 100% | 100% | 100% | 100% | ~30s |
+| **DINOv2** | ViT | 100% (8/8) | 100% (32/32) | 74% (15/23) | 100% (9/9) | **50ms** |
+| **minicpm-v** | VLM | 88% (7/8) | 100% (32/32) | 100% (23/23) | 100% (9/9) | ~45s |
+| **llava:7b** | VLM | 100% (8/8) | 100% (32/32) | 100% (23/23) | 100% (9/9) | ~30s |
 | qwen2.5vl | VLM | 0% | 0% | 0% | 0% | ~3min |
 
-> DINOv2 is default (fastest). minicpm-v best for Klinken Loaded Rack. llava:7b best balance of speed + accuracy.
+## Model Accuracy — Good Images (GOOD detection, false positive rate)
+
+| Model | Type | BSH | Klinken Rack | Notes |
+|---|---|---|---|---|
+| **DINOv2** | ViT | 100% (8/8) | 100% (16/16) | No false positives |
+| **minicpm-v** | VLM | TBD | TBD | Good at following context |
+| **llava:7b** | VLM | 0% (0/8) | TBD | High false positive on BSH good images |
+| qwen2.5vl | VLM | N/A | N/A | API broken — see note below |
+
+> **Recommendation:** DINOv2 for production (fastest, no false positives). minicpm-v for Klinken Loaded Rack (100% vs DINOv2's 74%). Avoid llava:7b for good image classification.
+
+## Why qwen2.5vl shows 0% / API error
+
+qwen2.5vl:7b requires the **OpenAI-compatible `/v1/chat/completions`** endpoint with multimodal message format, NOT the standard `/api/generate` endpoint that llava/minicpm use. When called via `/api/generate`, it responds in ~650ms with GOOD 50% confidence — meaning it ignores the image entirely and returns a default response. The fix is in `inspector.py` (`patch_qwen.py`) but training results still show 0% because the training script was run before the fix was applied. Re-running `train_all_models.py` after the patch will give accurate qwen results.
+
 
 ## Quick Start
 
@@ -60,8 +74,9 @@ Open `http://localhost:3002/index.html`
 | `annotator.html` | Browser-based annotation tool |
 | `index.html` | Main inspection UI |
 | `comparison.html` | Model accuracy comparison dashboard |
-| `train_all_models.py` | VLM training script (all projects) |
-| `train_bsh_loaded.py` | VLM training for BSH + Klinken Loaded |
+| `train_all_models.py` | VLM training script — all projects |
+| `train_bsh_loaded.py` | VLM training — BSH + Klinken Loaded |
+| `test_dinov2_all.py` | DINOv2 accuracy test — all projects |
 
 ## Annotation Workflow
 
@@ -73,23 +88,10 @@ Open `http://localhost:3002/index.html`
 
 ## Stack
 
-- **Backend**: FastAPI + DINOv2 (Meta) + scikit-learn
+- **Backend**: FastAPI + DINOv2 (Meta ViT-S/14) + scikit-learn
 - **VLM**: Ollama (llava:7b, minicpm-v, qwen2.5vl:7b)
 - **Localization**: PatchCore nearest-neighbor + Pascal VOC XML override
 - **Frontend**: Vanilla JS/HTML — no framework
-
-## Dataset Setup
-
-```powershell
-# Download Kaggle casting dataset (optional)
-python download_datasets.py
-
-# Convert all images to grayscale
-python convert_grayscale.py
-
-# Extract klinken images from zip
-python extract_klinken_all.py
-```
 
 ## Ports
 
