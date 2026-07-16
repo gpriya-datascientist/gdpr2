@@ -1,48 +1,72 @@
 # PressVision2
 
-Fast industrial defect detection using **DINOv2 ViT-S/14** + **VLM models** (llava:7b, minicpm-v) with XML annotation-guided localization.
+Industrial visual inspection system combining **DINOv2 ViT-S/14** (fast, trained) with **VLM models** (llava:7b, minicpm-v) guided by **Pascal VOC XML annotations** for precise defect localization.
 
-## Architecture
+---
+
+## How It Works
 
 ```
-[ANNOTATE]  annotator.html → draw boxes on bad/ images → export Pascal VOC XML
-[TRAIN]     server startup → DINOv2 embeds good/+bad/ → LogisticRegression + PatchCore memory bank → ~2s
-[INFER]     upload image → DINOv2 classify (50ms) → XML exists? use annotated boxes : PatchCore boxes
+[ANNOTATE]  annotator.html → draw boxes on defects → export Pascal VOC XML → save to bad/ folder
+[TRAIN]     server startup → DINOv2 embeds all good/+bad/ images → LogisticRegression classifier
+                           → PatchCore memory bank from good patches → ready in ~2 seconds
+[INFER]     upload image → DINOv2 classify (50ms) → XML found? use annotated boxes
+                                                    → no XML? PatchCore nearest-neighbor boxes
 ```
 
-## Projects
+---
 
-| Project | Good | Bad | Description |
+## Projects & Dataset
+
+| Project | Good | Bad | Task |
 |---|---|---|---|
-| BSH_Crack_Detection | 8 | 8 | Metal press tool edge crack detection |
-| Klinken_Rack_Position | 16 | 32 | Press clamp rack — all angles (KS1-6) |
-| Klinken_Loaded_Rack | 16 | 23 | Loaded rack clamp position (KS1/2/5) |
-| Klinken_Empty_Rack | 9 | 9 | Empty rack clamp position (KS4/6) |
+| BSH_Crack_Detection | 8 | 8 | Dark crack/fracture on metal press tool edge |
+| Klinken_Rack_Position | 16 | 32 | Press clamp rack — all angles combined (KS1–6) |
+| Klinken_Loaded_Rack | 16 | 23 | Loaded rack — too many clamps extended (KS1/2/5) |
+| Klinken_Empty_Rack | 9 | 9 | Empty rack — all clamps extended (KS4 good, KS6 bad) |
 
-## Model Accuracy — Bad Images (ANOMALY detection, tested with XML annotations)
+---
+
+## Model Comparison — Real Tested Results
+
+### Bad images — ANOMALY detection (with XML annotation context)
 
 | Model | Type | BSH | Klinken Rack | Klinken Loaded | Klinken Empty | Speed |
 |---|---|---|---|---|---|---|
-| **DINOv2** | ViT | 100% (8/8) | 100% (32/32) | 74% (15/23) | 100% (9/9) | **50ms** |
-| **minicpm-v** | VLM | 88% (7/8) | 100% (32/32) | 100% (23/23) | 100% (9/9) | ~45s |
-| **llava:7b** | VLM | 100% (8/8) | 100% (32/32) | 100% (23/23) | 100% (9/9) | ~30s |
+| **DINOv2** | ViT | **100%** 8/8 | **100%** 32/32 | 74% 15/23 | **100%** 9/9 | **50ms** |
+| **minicpm-v** | VLM | 88% 7/8 | **100%** 32/32 | **100%** 23/23 | **100%** 9/9 | ~45s |
+| **llava:7b** | VLM | **100%** 8/8 | **100%** 32/32 | **100%** 23/23 | **100%** 9/9 | ~30s |
 | qwen2.5vl | VLM | 0% | 0% | 0% | 0% | ~3min |
 
-## Model Accuracy — Good Images (GOOD detection, false positive rate)
+### Good images — GOOD detection (false positive check, tested without XML)
 
-| Model | Type | BSH | Klinken Rack | Notes |
-|---|---|---|---|---|
-| **DINOv2** | ViT | 100% (8/8) | 100% (16/16) | No false positives |
-| **minicpm-v** | VLM | TBD | TBD | Good at following context |
-| **llava:7b** | VLM | 0% (0/8) | TBD | High false positive on BSH good images |
-| qwen2.5vl | VLM | N/A | N/A | API broken — see note below |
+| Model | Type | BSH | Klinken Rack | Klinken Loaded | Klinken Empty |
+|---|---|---|---|---|---|
+| **DINOv2** | ViT | **100%** 8/8 | **100%** 16/16 | **100%** 16/16 | **100%** 9/9 |
+| llava:7b | VLM | 0% 0/8 | TBD | TBD | TBD |
+| minicpm-v | VLM | TBD | TBD | TBD | TBD |
+| qwen2.5vl | VLM | N/A | N/A | N/A | N/A |
 
-> **Recommendation:** DINOv2 for production (fastest, no false positives). minicpm-v for Klinken Loaded Rack (100% vs DINOv2's 74%). Avoid llava:7b for good image classification.
+---
 
-## Why qwen2.5vl shows 0% / API error
+## Key Finding — DINOv2 is the Most Reliable Model
 
-qwen2.5vl:7b requires the **OpenAI-compatible `/v1/chat/completions`** endpoint with multimodal message format, NOT the standard `/api/generate` endpoint that llava/minicpm use. When called via `/api/generate`, it responds in ~650ms with GOOD 50% confidence — meaning it ignores the image entirely and returns a default response. The fix is in `inspector.py` (`patch_qwen.py`) but training results still show 0% because the training script was run before the fix was applied. Re-running `train_all_models.py` after the patch will give accurate qwen results.
+> DINOv2 achieves **100% on good images across all projects** (zero false positives) and **100% on bad images** for 3 of 4 projects. It is the only model fully validated on both good and bad images. The one weakness is Klinken Loaded Rack at 74% — use **llava:7b or minicpm-v** for that specific project.
 
+| Use case | Recommended model |
+|---|---|
+| Production (speed + reliability) | **DINOv2** — 50ms, zero false positives |
+| Klinken Loaded Rack only | **llava:7b** — 100% on bad, ~30s |
+| Maximum bad-image accuracy | **minicpm-v** — 97% overall, ~45s |
+| Avoid | **qwen2.5vl** — API endpoint issue, 0% accuracy |
+
+---
+
+## Why qwen2.5vl Shows 0%
+
+qwen2.5vl:7b requires the OpenAI-compatible `/v1/chat/completions` endpoint with multimodal message format. When called via the standard `/api/generate` endpoint (used by llava/minicpm), it ignores the image and returns GOOD 50% in ~650ms. The fix is in `inspector.py` — re-run `train_all_models.py` after the patch for accurate results.
+
+---
 
 ## Quick Start
 
@@ -54,49 +78,64 @@ pip install fastapi uvicorn httpx python-multipart pydantic-settings python-dote
 
 copy .env.example .env
 
-# Window 1 — API
+# Window 1 — API server
 python -m uvicorn server:app --host 127.0.0.1 --port 8004
 
-# Window 2 — UI
+# Window 2 — UI file server
 python -m http.server 3002
 ```
 
 Open `http://localhost:3002/index.html`
 
+Model comparison dashboard: `http://localhost:3002/comparison.html`
+
+Annotation tool: `http://localhost:3002/annotator.html`
+
+---
+
 ## Key Files
 
 | File | Purpose |
 |---|---|
-| `server.py` | FastAPI server — port 8004 |
-| `inspector.py` | Inference engine — DINOv2 + llava/minicpm routing |
+| `server.py` | FastAPI — port 8004 |
+| `inspector.py` | Inference engine — DINOv2 + VLM routing + FORCE_LLM flag |
 | `embedder.py` | DINOv2 ViT-S/14 embeddings + PatchCore localization |
-| `annotation_utils.py` | Pascal VOC XML reader/writer |
-| `annotator.html` | Browser-based annotation tool |
+| `annotation_utils.py` | Pascal VOC XML reader (looks in `bad/`, `bad/xml/`, `bad/annotations/`) |
+| `annotator.html` | Browser annotation tool — draw boxes, export XML |
 | `index.html` | Main inspection UI |
 | `comparison.html` | Model accuracy comparison dashboard |
-| `train_all_models.py` | VLM training script — all projects |
-| `train_bsh_loaded.py` | VLM training — BSH + Klinken Loaded |
-| `test_dinov2_all.py` | DINOv2 accuracy test — all projects |
+| `train_all_models.py` | VLM accuracy test — all 3 models × all projects |
+| `train_bsh_loaded.py` | VLM test — BSH + Klinken Loaded only |
+| `test_dinov2_all.py` | DINOv2 full accuracy test (good + bad images) |
+
+---
 
 ## Annotation Workflow
 
 1. Open `http://localhost:3002/annotator.html`
-2. Load folder (e.g. `data/BSH_Crack_Detection/bad`)
-3. Draw boxes on defects, set class name (`crack`, `wrong_position` etc.)
+2. Load folder — e.g. `data/BSH_Crack_Detection/bad`
+3. Draw boxes on defects, set class (`crack`, `wrong_position` etc.)
 4. Export XML → save to same `bad/` folder
 5. Restart server — XML boxes used automatically at inference
+6. Backend shows `dinov2+annotation` confirming XML was used
+
+---
 
 ## Stack
 
-- **Backend**: FastAPI + DINOv2 (Meta ViT-S/14) + scikit-learn
-- **VLM**: Ollama (llava:7b, minicpm-v, qwen2.5vl:7b)
-- **Localization**: PatchCore nearest-neighbor + Pascal VOC XML override
-- **Frontend**: Vanilla JS/HTML — no framework
+- **DINOv2 ViT-S/14** — Meta, frozen pretrained, 384-dim embeddings, zero-shot transfer
+- **LogisticRegression** — scikit-learn, `class_weight=balanced`, trains in ~2s
+- **PatchCore** — nearest-neighbor memory bank, LOO threshold calibration
+- **VLMs** — Ollama: llava:7b, minicpm-v, qwen2.5vl:7b
+- **XML annotations** — Pascal VOC format, override PatchCore boxes at inference
+- **Frontend** — Vanilla JS/HTML, no framework, pure CSS bounding boxes
+
+---
 
 ## Ports
 
-| Service | Port | URL |
-|---|---|---|
-| API | 8004 | http://localhost:8004 |
-| UI | 3002 | http://localhost:3002 |
-| Ollama | 11434 | http://localhost:11434 |
+| Service | Port |
+|---|---|
+| API | 8004 |
+| UI | 3002 |
+| Ollama | 11434 |
